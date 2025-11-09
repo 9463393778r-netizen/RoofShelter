@@ -1,0 +1,238 @@
+/***
+=============================================
+Team One
+=============================================
+***/
+.team-one {
+    position: relative;
+    display: block;
+    background-color: #f4f4f4;
+    padding: 120px 0 90px;
+    z-index: 1;
+}
+
+.team-one__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: .20;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.team-one__single {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.team-one__single.mt30 {
+    margin-top: 30px;
+}
+
+.team-one__img-box {
+    position: relative;
+    display: block;
+}
+
+.team-one__img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.team-one__img:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .5s ease-out;
+    background-color: rgba(var(--suntop-black-rgb), 0.7);
+}
+
+.team-one__single:hover:hover .team-one__img:after {
+    opacity: 1
+}
+
+.team-one__img img {
+    width: 100%;
+    transform: scale(1.01);
+    transition: transform .5s cubic-bezier(.27, .48, .45, .94);
+    transform-origin: 70% 80%
+}
+
+.team-one__single:hover .team-one__img img {
+    transform: scale(1.036);
+    transition-duration: .9s
+}
+
+.team-one__content {
+    position: relative;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 60px 0px rgba(18, 20, 31, 0.08);
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: -45px;
+    padding: 16px 30px 19px;
+    z-index: 2;
+}
+
+.team-one__content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--suntop-base);
+    background-position: top center;
+    transition-delay: .1s;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+    transition-property: all;
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transform: scaleY(0);
+    z-index: 2;
+}
+
+.team-one__single:hover .team-one__content::before {
+    transform: scaleY(1.0);
+}
+
+.team-one__content::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 30px solid transparent;
+    border-left: 30px solid var(--suntop-base);
+    background-position: center bottom;
+    transition-delay: .1s;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+    transition-property: all;
+    transform-origin: bottom;
+    transform-style: preserve-3d;
+    transform: scaleY(0);
+    z-index: 2;
+}
+
+.team-one__single:hover .team-one__content::after {
+    transform: scaleY(1.0);
+}
+
+.team-one__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+    text-transform: capitalize;
+}
+
+.team-one__title a {
+    color: var(--suntop-black);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.team-one__title a:hover {
+    color: var(--suntop-base);
+}
+
+.team-one__sub-title {
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.team-one__share-and-social {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.team-one__share {
+    position: relative;
+    display: block;
+}
+
+.team-one__share a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--suntop-base);
+    font-size: 18px;
+    color: var(--suntop-white);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.team-one__social {
+    position: absolute;
+    top: -114px;
+    right: 0;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--suntop-white);
+    padding: 15px;
+    transform: scaleY(0.0);
+    transform-origin: center;
+    transform-style: preserve-3d;
+    -webkit-transition: all 0.4s linear;
+    -o-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+    transform-origin: right center;
+}
+
+.team-one__share-and-social:hover .team-one__social {
+    transform: scaleY(1.0);
+    transform-origin: bottom center;
+    transition-delay: 200ms;
+}
+
+.team-one__social a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: var(--suntop-black);
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+.team-one__social a:hover {
+    color: var(--suntop-base);
+}
+
+.team-one__social a+a {
+    margin-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/***
+=============================================
+End
+=============================================
+***/

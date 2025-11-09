@@ -1,0 +1,223 @@
+/*==============================================
+    Pricing One
+===============================================*/
+.pricing-one {
+    position: relative;
+    display: block;
+    background: var(--suntop-black);
+    padding: 120px 0 90px;
+    z-index: 5;
+}
+
+.pricing-one .shape1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.pricing-one .shape2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.pricing-one .sec-title__tagline .text-box p {
+    color: var(--suntop-white);
+}
+
+.pricing-one .sec-title__title {
+    color: var(--suntop-white);
+}
+
+.pricing-one__single {
+    position: relative;
+    display: block;
+    background: var(--suntop-white);
+    padding: 32px 30px 30px;
+    margin-bottom: 30px;
+    z-index: 1;
+}
+
+.pricing-one__single::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: scaleX(0.8) rotateX(0deg);
+    transition: all 0.4s linear;
+    background: var(--suntop-base);
+    opacity: 0;
+    content: "";
+    z-index: -1;
+}
+
+.pricing-one__single:hover::before {
+    transform: scaleX(1.0) rotateX(0deg);
+    transition: all 0.4s linear;
+    opacity: 1;
+}
+
+.pricing-one__single .table-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #d8d8d8;
+    padding-bottom: 26px;
+    margin-bottom: 29px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.pricing-one__single:hover .table-header {
+    border-bottom: 1px solid rgba(var(--suntop-white-rgb), 0.5);
+}
+
+.pricing-one__single .table-header .category-box {
+    position: relative;
+    display: block;
+}
+
+.pricing-one__single .table-header .category-box h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 700;
+    text-transform: capitalize;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.pricing-one__single:hover .table-header .category-box h2 {
+    color: var(--suntop-white);
+}
+
+.pricing-one__single .table-header .category-box p {
+    font-size: 16px;
+    margin: 0;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.pricing-one__single:hover .table-header .category-box p {
+    color: var(--suntop-white);
+}
+
+.pricing-one__single .table-header .pricing-box {
+    position: relative;
+    display: block;
+}
+
+.pricing-one__single .table-header .pricing-box h4 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.pricing-one__single:hover .table-header .pricing-box h4 {
+    color: var(--suntop-white);
+}
+
+.pricing-one__single .table-content {
+    position: relative;
+    display: block;
+}
+
+.pricing-one__single .table-content ul {
+    position: relative;
+    display: block;
+}
+
+.pricing-one__single .table-content ul li {
+    position: relative;
+    display: block;
+}
+
+.pricing-one__single .table-content ul li+li {
+    margin-top: 7px;
+}
+
+.pricing-one__single .table-content ul li p {
+    margin: 0;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.pricing-one__single:hover .table-content ul li p {
+    color: var(--suntop-white);
+}
+
+.pricing-one__single .table-content ul li p span::before {
+    position: relative;
+    display: inline-block;
+    color: var(--suntop-base);
+    font-size: 15px;
+    line-height: 15px;
+    margin-right: 5px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.pricing-one__single:hover .table-content ul li p span::before {
+    color: var(--suntop-white);
+}
+
+.pricing-one__single .table-footer {
+    position: relative;
+    display: block;
+    margin-top: 40px;
+}
+
+.pricing-one__single .table-footer .thm-btn {
+    width: 100%;
+    text-align: center;
+}
+
+.pricing-one__single:hover .table-footer .thm-btn {
+    background: var(--suntop-white);
+    color: var(--suntop-black);
+}
+
+.pricing-one__single .table-footer .thm-btn .hover-btn {
+    background-color: var(--suntop-white);
+}
+
+/*==============================================
+    Pricing One Pricing
+===============================================*/
+.pricing-one--pricing {
+    position: relative;
+    display: block;
+    background: var(--suntop-white);
+}
+
+.pricing-one.pricing-one--pricing .sec-title__title {
+    color: var(--suntop-black);
+}
+
+.pricing-one--pricing .pricing-one__single {
+    -webkit-box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.08);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================================
+    End
+===============================================*/

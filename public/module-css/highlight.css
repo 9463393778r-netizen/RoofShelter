@@ -1,0 +1,454 @@
+/***
+=============================================
+Highlight One
+=============================================
+***/
+.highlight-one {
+    position: relative;
+    display: block;
+    background: var(--suntop-white);
+    padding: 120px 0px 120px;
+    z-index: 1;
+}
+
+.highlight-one__single {
+    position: relative;
+    display: block;
+    margin-bottom: 42px;
+}
+
+.highlight-one__single-img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.highlight-one__single-img:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--suntop-black);
+    opacity: 0;
+    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.highlight-one__single:hover .highlight-one__single-img:before {
+    opacity: .50;
+}
+
+.highlight-one__single-img img {
+    width: 100%;
+    transform: scale3d(1, 1, 1);
+    transition: transform 1s ease-in-out;
+}
+
+.highlight-one__single:hover .highlight-one__single-img img {
+    transform: scale(1.05) rotate(0deg);
+}
+
+.highlight-one__single-content {
+    position: relative;
+    display: block;
+    margin-top: 32px;
+    padding-left: 23px;
+}
+
+.highlight-one__single-content::before {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    bottom: 8px;
+    width: 3px;
+    background: var(--suntop-base);
+    content: "";
+}
+
+.highlight-one__single-content h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.highlight-one__single-content h2 a {
+    color: var(--suntop-black);
+}
+
+.highlight-one__single-content h2 a:hover {
+    color: var(--suntop-base);
+}
+
+.highlight-one__single-content p {
+    color: var(--suntop-base);
+    text-transform: capitalize;
+}
+
+.highlight-one__btn {
+    position: relative;
+    display: block;
+    text-align: center;
+    line-height: 0px;
+}
+
+
+/***
+=============================================
+Project Details
+=============================================
+***/
+.project-details {
+    position: relative;
+    display: block;
+    padding: 120px 0px 112px;
+    z-index: 1;
+}
+
+.project-details__sidebar {
+    position: relative;
+    display: block;
+    margin-right: -35px;
+}
+
+.project-details__sidebar-project-info {
+    position: relative;
+    display: block;
+    background: #f4f4f4;
+    border: 1px solid #bfbfbf;
+    padding: 31px 40px 40px;
+}
+
+.project-details__sidebar-project-info .title-box {
+    position: relative;
+    display: block;
+    padding-bottom: 16px;
+}
+
+.project-details__sidebar-project-info .title-box::before {
+    position: absolute;
+    left: -40px;
+    bottom: 0;
+    right: -40px;
+    background: #bfbfbf;
+    height: 1px;
+    content: "";
+}
+
+.project-details__sidebar-project-info .title-box::after {
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    width: 50px;
+    background: var(--suntop-base);
+    height: 1px;
+    content: "";
+}
+
+.project-details__sidebar-project-info .title-box h2 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.project-details__sidebar-project-info-list {
+    position: relative;
+    display: block;
+    margin-top: 16px;
+}
+
+.project-details__sidebar-project-info-list li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #bfbfbf;
+    padding: 20px 0px 18px;
+}
+
+.project-details__sidebar-project-info-list li .title {
+    position: relative;
+    display: block;
+}
+
+.project-details__sidebar-project-info-list li .title h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.project-details__sidebar-project-info-list li .text-box {
+    position: relative;
+    display: block;
+}
+
+.project-details__sidebar-project-info-list li .text-box p {
+    color: var(--suntop-base);
+}
+
+
+.project-details__sidebar-agent {
+    position: relative;
+    display: block;
+    background: #f4f4f4;
+    border: 1px solid #bfbfbf;
+    padding: 31px 40px 40px;
+    margin-top: 30px;
+}
+
+.project-details__sidebar-agent .title-box {
+    position: relative;
+    display: block;
+    padding-bottom: 16px;
+    margin-bottom: 45px;
+}
+
+.project-details__sidebar-agent .title-box::before {
+    position: absolute;
+    left: -40px;
+    bottom: 0;
+    right: -40px;
+    background: #bfbfbf;
+    height: 1px;
+    content: "";
+}
+
+.project-details__sidebar-agent .title-box::after {
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    width: 50px;
+    background: var(--suntop-base);
+    height: 1px;
+    content: "";
+}
+
+.project-details__sidebar-agent .title-box h2 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.project-details__sidebar-agent-inner {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.project-details__sidebar-agent-img {
+    position: relative;
+    display: block;
+}
+
+.project-details__sidebar-agent-img img {
+    width: 100%;
+}
+
+
+.project-details__sidebar-agent-contact-info {
+    position: relative;
+    display: block;
+    margin-left: 30px;
+    margin-top: -6px;
+    flex: 1;
+}
+
+.project-details__sidebar-agent-contact-info p {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.project-details__sidebar-agent-contact-info p+p {
+    margin-top: 6px;
+}
+
+.project-details__sidebar-agent-contact-info p span::before {
+    position: relative;
+    display: inline-block;
+    color: var(--suntop-base);
+    font-size: 17px;
+    line-height: 17px;
+    margin-right: 5px;
+}
+
+.project-details__sidebar-agent-contact-info p a {
+    color: var(--suntop-gray);
+}
+
+.project-details__sidebar-agent-contact-info p a:hover {
+    color: var(--suntop-base);
+}
+
+.project-details__sidebar-map-box {
+    position: relative;
+    display: block;
+    margin-top: 30px;
+}
+
+.project-details__sidebar-map {
+    position: relative;
+    display: block;
+    border: none;
+    height: 320px;
+    width: 100%;
+}
+
+.project-details__content {
+    position: relative;
+    display: block;
+    margin-left: 80px;
+}
+
+.project-details__content-img1 {
+    position: relative;
+    display: block;
+}
+
+.project-details__content-img1 img {
+    width: 100%;
+}
+
+.project-details__content-text1 {
+    position: relative;
+    display: block;
+    margin-top: 39px;
+}
+
+.project-details__content-text1 h2 {
+    color: var(--suntop-black);
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 9px;
+}
+
+.project-details__content-text1 p {
+    margin: 0;
+}
+
+.project-details__content-text2 {
+    position: relative;
+    display: block;
+    margin-top: 26px;
+}
+
+.project-details__content-text2 h2 {
+    color: var(--suntop-black);
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 9px;
+}
+
+.project-details__content-text2 p {
+    margin: 0;
+}
+
+
+.project-details__content-img2 {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-top: 37px;
+}
+
+.project-details__content-img2 .row {
+    --bs-gutter-x: 20px;
+}
+
+.project-details__content-img2-single {
+    position: relative;
+    display: block;
+}
+
+.project-details__content-img2-single img {
+    width: 100%;
+}
+
+.project-details__content-text3 {
+    position: relative;
+    display: block;
+    margin-top: 38px;
+}
+
+.project-details__content-text3 p {
+    margin: 0;
+}
+
+.project-details__content-text4 {
+    position: relative;
+    display: block;
+    margin-top: 31px;
+}
+
+.project-details__content-text4-list {
+    position: relative;
+    display: block;
+}
+
+.project-details__content-text4-list li {
+    position: relative;
+    display: block;
+}
+
+.project-details__content-text4-list li+li {
+    margin-top: 16px;
+}
+
+.project-details__content-text4-list li p {
+    margin: 0;
+}
+
+.project-details__content-text4-list li p span::before {
+    position: relative;
+    display: inline-block;
+    color: var(--suntop-base);
+    font-size: 18px;
+    line-height: 18px;
+    top: 1px;
+    margin-right: 3px;
+}
+
+.project-details__content-text5 {
+    position: relative;
+    display: block;
+    margin-top: 31px;
+}
+
+.project-details__content-text5 p {
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***
+=============================================
+End
+=============================================
+***/

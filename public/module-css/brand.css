@@ -1,0 +1,46 @@
+/***
+=============================================
+Brand One
+=============================================
+***/
+.brand-one {
+    position: relative;
+    display: block;
+    padding: 0px 0px 120px;
+    z-index: 2;
+}
+
+.brand-one__inner {
+    position: relative;
+    display: block;
+}
+
+.brand-one__list {
+    position: relative;
+    display: block;
+    border: 1px solid #bfbfbf;
+}
+
+.brand-one__list li {
+    position: relative;
+    display: block;
+    float: left;
+    width: 20%;
+    text-align: center;
+    border-right: 1px solid #bfbfbf;
+    padding: 71px 0px 71px;
+    cursor: pointer;
+}
+
+.brand-one__list li:last-child {
+    border-right: none;
+}
+
+.brand-one__list li .img-box {
+    position: relative;
+    display: block;
+}
+
+.brand-one__list li .img-box img {
+    width: auto;
+}

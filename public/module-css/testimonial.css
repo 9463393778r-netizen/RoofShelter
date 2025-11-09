@@ -1,0 +1,156 @@
+/***
+=============================================
+Testimonial One
+=============================================
+***/
+.testimonial-one {
+    position: relative;
+    display: block;
+    padding: 120px 0px 120px;
+    z-index: 1;
+}
+
+.testimonial-one__img {
+    position: relative;
+    display: block;
+    margin-right: 70px;
+}
+
+.testimonial-one__img-box {
+    position: relative;
+    display: block;
+}
+
+.testimonial-one__img-box img {
+    width: 100%;
+}
+
+
+.testimonial-one__content {
+    position: relative;
+    display: block;
+}
+
+.testimonial-one__single {
+    position: relative;
+    display: block;
+}
+
+.testimonial-one__single-icon {
+    position: relative;
+    display: block;
+    text-align: right;
+    margin-top: -7px;
+    margin-bottom: 8px;
+}
+
+.testimonial-one__single-icon span::before {
+    position: relative;
+    display: inline-block;
+    color: #bfbfbf;
+    font-size: 60px;
+    line-height: 60px;
+}
+
+.testimonial-one__single-text {
+    position: relative;
+    display: block;
+}
+
+.testimonial-one__single-text p {
+    color: var(--suntop-black);
+    font-size: 30px;
+    line-height: 50px;
+    font-weight: 400;
+}
+
+.testimonial-one__single-author-info {
+    position: relative;
+    display: block;
+    margin-top: 141px;
+    padding-bottom: 27px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.testimonial-one__single-author-info h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 4px;
+}
+
+.testimonial-one__single-author-info p {
+    margin: 0;
+}
+
+.testimonial-one__carousel.owl-theme .owl-nav {
+    margin-top: 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    margin-bottom: 26px;
+}
+
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-prev,
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-next {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--suntop-black);
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid var(--suntop-black);
+    outline: none;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-prev::before,
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-next::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--suntop-base);
+    transform: scale(0.6);
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    z-index: -1;
+}
+
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-prev:hover::before,
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-next:hover::before {
+    transform: scale(1.0);
+    opacity: 1;
+}
+
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-prev:hover,
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-next:hover {
+    border-color: var(--suntop-base);
+    color: var(--suntop-white);
+}
+
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-prev span::before,
+.testimonial-one__carousel.owl-carousel .owl-nav button.owl-next span::before {
+    font-weight: 700;
+    line-height: 53px;
+}
+
+
+
+
+/***
+=============================================
+End
+=============================================
+***/

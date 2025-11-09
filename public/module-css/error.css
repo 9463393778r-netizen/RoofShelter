@@ -1,0 +1,68 @@
+/***
+=============================================
+Error Page
+=============================================
+***/
+.error-page {
+    position: relative;
+    display: block;
+    padding: 120px 0px 120px;
+    z-index: 14;
+}
+
+.error-page__pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.02;
+    z-index: -1;
+}
+
+.error-page__inner {
+    position: relative;
+    display: block;
+}
+
+.error-page__inner h2 {
+    color: transparent;
+    -webkit-text-stroke: 4px var(--suntop-black);
+    font-size: 230px;
+    line-height: 0.9em;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.error-page__inner h3 {
+    font-size: 60px;
+    line-height: 1.1em;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.error-page__inner p {
+    font-weight: 500;
+    margin: 0px;
+}
+
+.error-page__inner .btn-box {
+    position: relative;
+    display: block;
+    line-height: 0px;
+    margin-top: 40px;
+}
+
+
+
+
+
+/***
+=============================================
+End
+=============================================
+***/

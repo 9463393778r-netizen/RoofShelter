@@ -1,0 +1,220 @@
+/*--------------------------------------------------------------
+# Contact Info
+--------------------------------------------------------------*/
+.contact-info {
+    position: relative;
+    display: block;
+    padding: 120px 0 90px;
+    z-index: 1;
+}
+
+.contact-info__single {
+    position: relative;
+    display: block;
+    background: #f4f4f4;
+    border: 1px solid #bfbfbf;
+    text-align: center;
+    padding: 40px 40px 41px;
+    margin-bottom: 30px;
+}
+
+.contact-info__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: var(--suntop-white);
+    border-radius: 50%;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.contact-info__icon:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    border-radius: 50%;
+    background-color: var(--suntop-black);
+    transform: scale(0);
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.62, 0.21, 0.45, 1.52);
+    z-index: -1;
+}
+
+.contact-info__single:hover .contact-info__icon:before {
+    transform: scaleX(1);
+}
+
+.contact-info__icon span {
+    position: relative;
+    display: inline-block;
+    font-size: 32px;
+    color: var(--suntop-black);
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.contact-info__single:hover .contact-info__icon span {
+    transform: scale(0.9);
+    color: var(--suntop-white);
+}
+
+
+.contact-info__single p {
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.contact-info__single h3 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px;
+    color: var(--suntop-black);
+    font-family: var(--suntop-font);
+}
+
+.contact-info__single h3 a {
+    color: var(--suntop-black);
+}
+
+.contact-info__single h3 a:hover {
+    color: var(--suntop-base)
+}
+
+
+/*--------------------------------------------------------------
+# Contact Page
+--------------------------------------------------------------*/
+.contact-page {
+    position: relative;
+    display: block;
+    padding: 0 0 120px;
+    z-index: 1;
+}
+
+.contact-page__inner {
+    position: relative;
+    display: block;
+    background-color: var(--suntop-black);
+    padding: 60px 0 60px;
+    z-index: 1;
+}
+
+.contact-page__left {
+    position: relative;
+    display: block;
+    margin-left: 60px;
+    margin-right: 10px;
+}
+
+.google-map__one {
+    position: relative;
+    display: block;
+    border: none;
+    height: 519px;
+    width: 100%;
+    border-radius: 0px;
+}
+
+.contact-page__right {
+    position: relative;
+    display: block;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.contact-page__form-title {
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 1.2em;
+    color: var(--suntop-white);
+    margin-bottom: 26px;
+}
+
+.contact-page__form {
+    position: relative;
+    display: block;
+}
+
+.contact-page__input-box {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.contact-page__input-box input[type="text"],
+.contact-page__input-box input[type="email"],
+.contact-page__input-box input[type="number"] {
+    height: 60px;
+    width: 100%;
+    background-color: rgba(var(--suntop-white-rgb), 0.03);
+    border: 1px solid rgba(var(--suntop-white-rgb), .10);
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(var(--suntop-white-rgb), .70);
+    display: block;
+    border-radius: 0px;
+}
+
+.contact-page__input-box textarea {
+    font-size: 16px;
+    color: rgba(var(--suntop-white-rgb), .70);
+    height: 175px;
+    width: 100%;
+    background-color: rgba(var(--suntop-white-rgb), 0.03);
+    border: 1px solid rgba(var(--suntop-white-rgb), .10);
+    padding: 15px 20px 30px;
+    border-radius: 0px;
+    outline: none;
+    font-weight: 400;
+    position: relative;
+    display: block;
+}
+
+.contact-page__input-box.text-message-box {
+    height: 175px;
+}
+
+.contact-page__btn-box {
+    position: relative;
+    display: block;
+}
+
+.contact-page__btn-box .thm-btn {
+    border: none;
+}
+
+.contact-page__btn-box .thm-btn:hover {
+    color: var(--suntop-black);
+}
+
+.contact-page__btn-box .thm-btn .hover-btn {
+    background: var(--suntop-white);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================================
+    End
+===============================================*/

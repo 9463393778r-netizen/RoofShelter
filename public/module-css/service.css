@@ -1,0 +1,499 @@
+/***
+=============================================
+Services One
+=============================================
+***/
+.services-one {
+    position: relative;
+    display: block;
+    padding: 120px 0 120px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.services-one__tab {
+    position: relative;
+    display: block;
+}
+
+.services-one__tab .tabs-content {
+    position: relative;
+    display: block;
+}
+
+.services-one__tab .tabs-content .tab {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: auto;
+    visibility: hidden;
+}
+
+.services-one__tab .tabs-content .tab.tab-active {
+    position: relative;
+    visibility: visible;
+    z-index: 5;
+}
+
+.services-one__single-tab {
+    transition: all 0.7s ease;
+    opacity: 0;
+    transform: scaleY(0.9);
+    transform-origin: top bottom;
+}
+
+.services-one__tab .tabs-content .tab.tab-active .services-one__single-tab {
+    opacity: 1.0;
+    transform: scaleY(1);
+    transform-origin: bottom top;
+}
+
+.services-one__single-tab {
+    position: relative;
+    display: block;
+    margin-right: 85px;
+}
+
+.services-one__single-tab-img {
+    position: relative;
+    display: block;
+}
+
+.services-one__single-tab-img img {
+    width: 100%;
+}
+
+.services-one__tab .tabs-button-box {
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 30px 27px;
+    cursor: pointer;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 0%;
+    background-color: var(--suntop-base);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item.active-btn::before {
+    height: 100%;
+}
+
+.services-one__tab .tabs-button-box li {
+    position: relative;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.services-one__tab .tabs-button-box li.active-btn {
+    border-color: var(--suntop-base);
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item .text-box {
+    position: relative;
+    display: block;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item .text-box h2 {
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item.active-btn .text-box h2 {
+    color: var(--suntop-white);
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item .text-box h2 span {
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 43px;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item .icon-box {
+    position: relative;
+    display: block;
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item .icon-box a {
+    position: relative;
+    display: inline-block;
+    color: var(--suntop-black);
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item.active-btn .icon-box a {
+    color: var(--suntop-white);
+}
+
+.services-one__tab .tabs-button-box .tab-btn-item .icon-box a i::before {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+
+/***
+=============================================
+Services Details
+=============================================
+***/
+
+.services-details {
+    position: relative;
+    display: block;
+    padding: 120px 0px 112px;
+    z-index: 1;
+}
+
+.services-details__sidebar {
+    position: relative;
+    display: block;
+    margin-right: -35px;
+}
+
+.services-details__sidebar-services {
+    position: relative;
+    display: block;
+    background: #f4f4f4;
+    border: 1px solid #bfbfbf;
+    padding: 31px 40px 40px;
+}
+
+.services-details__sidebar-services .title-box {
+    position: relative;
+    display: block;
+    padding-bottom: 16px;
+}
+
+.services-details__sidebar-services .title-box::before {
+    position: absolute;
+    left: -40px;
+    bottom: 0;
+    right: -40px;
+    background: #bfbfbf;
+    height: 1px;
+    content: "";
+}
+
+.services-details__sidebar-services .title-box::after {
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    width: 50px;
+    background: var(--suntop-base);
+    height: 1px;
+    content: "";
+}
+
+.services-details__sidebar-services .title-box h2 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.services-details__sidebar-services-list {
+    position: relative;
+    display: block;
+    margin-top: 30px;
+}
+
+.services-details__sidebar-services-list li {
+    position: relative;
+    display: block;
+    border-bottom: 1px solid #bfbfbf;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.services-details__sidebar-services-list li.active,
+.services-details__sidebar-services-list li:hover {
+    border-color: var(--suntop-base);
+}
+
+.services-details__sidebar-services-list li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--suntop-black);
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 20px 25px 18px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+}
+
+.services-details__sidebar-services-list li.active a,
+.services-details__sidebar-services-list li a:hover {
+    background: var(--suntop-base);
+    color: var(--suntop-white);
+}
+
+.services-details__sidebar-services-list li a span::before {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    top: 2px;
+}
+
+
+.services-details__sidebar-contact {
+    position: relative;
+    display: block;
+    padding: 42px 40px 50px;
+    margin-top: 50px;
+}
+
+.services-details__sidebar-contact-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: -1;
+}
+
+
+.services-details__sidebar-contact-bg::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #000000;
+    opacity: 0.8;
+    content: "";
+}
+
+.services-details__sidebar-contact-text1 {
+    position: relative;
+    display: block;
+    border-bottom: 1px solid var(--suntop-white);
+    padding-bottom: 22px;
+}
+
+.services-details__sidebar-contact-text1 h2 {
+    color: var(--suntop-white);
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 9px;
+}
+
+.services-details__sidebar-contact-text1 p {
+    color: var(--suntop-white);
+}
+
+.services-details__sidebar-contact-text2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.services-details__sidebar-contact-text2 .icon-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--suntop-base);
+}
+
+.services-details__sidebar-contact-text2 .icon-box span::before {
+    position: relative;
+    display: inline-block;
+    color: var(--suntop-white);
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.services-details__sidebar-contact-text2 .content-box {
+    position: relative;
+    display: block;
+    margin-left: 25px;
+    flex: 1;
+}
+
+.services-details__sidebar-contact-text2 .content-box h2 {
+    color: var(--suntop-white);
+    font-size: 26px;
+    line-height: 36px;
+    margin-bottom: 3px;
+}
+
+.services-details__sidebar-contact-text2 .content-box p {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 600;
+}
+
+.services-details__sidebar-contact-text2 .content-box p a {
+    color: var(--suntop-white);
+}
+
+.services-details__sidebar-contact-text2 .content-box p a:hover {
+    color: var(--suntop-base);
+}
+
+
+.services-details__content {
+    position: relative;
+    display: block;
+    margin-left: 80px;
+}
+
+.services-details__content-img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.services-details__content-img img {
+    width: 100%;
+}
+
+.services-details__content-text1 {
+    position: relative;
+    display: block;
+    margin-top: 44px;
+}
+
+.services-details__content-text1 .title-box {
+    position: relative;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.services-details__content-text1 .title-box h2 {
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 4px;
+}
+
+.services-details__content-text1 .title-box p {
+    color: var(--suntop-base);
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+
+.services-details__content-text1 .text1 {
+    position: relative;
+    display: block;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.services-details__content-text1 .text2 {
+    position: relative;
+    display: block;
+    margin: 0;
+}
+
+.services-details__content-text2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+}
+
+.services-details__content-text1-list-box {
+    position: relative;
+    display: block;
+}
+
+.services-details__content-text1-list-box h2 {
+    color: var(--suntop-base);
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.services-details__content-text1-list {
+    position: relative;
+    display: block;
+}
+
+.services-details__content-text1-list li {
+    position: relative;
+    display: block;
+}
+
+.services-details__content-text1-list li+li {
+    margin-top: 7px;
+}
+
+.services-details__content-text1-list li p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.services-details__content-text1-list li p span::before {
+    position: relative;
+    display: inline-block;
+    color: var(--suntop-base);
+    font-size: 15px;
+    line-height: 15px;
+    margin-right: 5px;
+    top: 1px;
+}
+
+.services-details__content-text3 {
+    position: relative;
+    display: block;
+    margin-top: 40px;
+}
+
+.services-details__content-text3 p {
+    margin: 0;
+}
+
+
+
+
+
+
+/***
+=============================================
+End
+=============================================
+***/

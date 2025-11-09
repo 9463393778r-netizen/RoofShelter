@@ -1,0 +1,20 @@
+import { NextResponse } from 'next/server'
+
+interface Service {
+  id: number
+  title: string
+  description: string
+}
+
+const services: Service[] = [
+  { id: 1, title: 'Roof Repair', description: 'Professional roof repair services' },
+  { id: 2, title: 'Solar Installation', description: 'Solar panel installation and maintenance' },
+  { id: 3, title: 'Roof Renovation', description: 'Complete roof renovation services' },
+  { id: 4, title: 'Siding Corner', description: 'Siding installation and repair' },
+  { id: 5, title: 'Damage Roofing', description: 'Emergency damage repair services' },
+  { id: 6, title: 'Roof Installation', description: 'New roof installation services' }
+]
+
+export async function GET() {
+  return NextResponse.json(services)
+}
