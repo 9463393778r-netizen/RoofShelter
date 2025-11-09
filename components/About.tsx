@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -8,10 +9,10 @@ export default function About() {
           <div className="about-one__left">
             <div className="about-one__img-box">
               <div className="about-one__img">
-                <img src="/images/blog/10009.jpg" alt="Roofing work" />
+                <Image src="/images/blog/10009.jpg" alt="Roofing work" width={500} height={400} />
               </div>
               <div className="about-one__img-two">
-                <img src="/images/blog/10009.jpg" alt="Roofing work" />
+                <Image src="/images/blog/10009.jpg" alt="Roofing work" width={300} height={250} />
               </div>
               <div className="about-one__experience">
                 <div className="about-one__experience-inner">
@@ -29,7 +30,7 @@ export default function About() {
               </h2>
               <p className="about-one__sub-title">Excellence you can trust</p>
               <p className="about-one__text">
-                Your roof is your first line of defense against the elements and we're here to keep 
+                Your roof is your first line of defense against the elements and we&apos;re here to keep 
                 it strong. With years of experience in roof installation, repair and maintenance, 
                 we provide reliable solutions that protect.
               </p>

@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -15,7 +16,7 @@ export default function Header() {
             <div className="main-menu__wrapper-inner">
               <div className="main-header-one__bottom-left">
                 <div className="main-header-one__logo">
-                  <Link href="/"><img src="/images/logo.png" alt="RoofShelter" /></Link>
+                  <Link href="/"><Image src="/images/logo.png" alt="RoofShelter" width={180} height={60} /></Link>
                 </div>
               </div>
 

@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface Service {
   id: number
@@ -31,10 +32,12 @@ export default function Services() {
         <div className="services-one__bottom">
           <div className="services-one__left">
             <div className="services-one__img">
-              <img 
+              <Image 
                 key={activeTab}
                 src={services[activeTab].image}
                 alt={services[activeTab].title}
+                width={500}
+                height={500}
               />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
           <div className="site-footer-one__top-inner">
             <div className="footer-widget-one__about">
               <div className="footer-widget-one__about-logo">
-                <Link href="/"><img src="/images/logo.png" alt="RoofShelter" /></Link>
+                <Link href="/"><Image src="/images/logo.png" alt="RoofShelter" width={180} height={60} /></Link>
               </div>
 
               <p className="footer-widget-one__about-text">

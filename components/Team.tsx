@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 export default function Team() {
   const teamMembers = [
@@ -25,7 +26,7 @@ export default function Team() {
             {teamMembers.map((member, index) => (
               <div key={index} className="team-one__single">
                 <div className="team-one__img">
-                  <img src={member.image} alt={member.name} />
+                  <Image src={member.image} alt={member.name} width={300} height={300} />
                   <div className="team-one__social">
                     <a href="#"><i className="fab fa-facebook-f"></i></a>
                     <a href="#"><i className="fab fa-twitter"></i></a>

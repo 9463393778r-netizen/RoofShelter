@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 export default function Highlights() {
   const projects = [
@@ -26,7 +27,7 @@ export default function Highlights() {
             {projects.map((project, index) => (
               <div key={index} className="highlights-one__single">
                 <div className="highlights-one__img">
-                  <img src={project.image} alt={project.title} />
+                  <Image src={project.image} alt={project.title} width={400} height={300} />
                   <div className="highlights-one__overlay">
                     <div className="highlights-one__content">
                       <h3>{project.title}</h3>
