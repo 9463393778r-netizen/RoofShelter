@@ -1,8 +1,8 @@
-// File: /Users/randhir/Downloads/suntop-pack/RoofShelter/app/api/services/route.ts
-import * as entry from '../../../../../app/api/services/route.js'
+// File: /Users/randhir/Downloads/suntop-pack/RoofShelter/src/app/api/services/route.ts
+import * as entry from '../../../../../src/app/api/services/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../app/api/services/route.js')
+type TEntry = typeof import('../../../../../src/app/api/services/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{

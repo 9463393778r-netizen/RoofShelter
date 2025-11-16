@@ -29,7 +29,10 @@ npm install
 ```
 
 3. Set up environment variables:
-Copy `.env.local` and update with your values:
+Copy `.env.example` to `.env.local` and update with your values:
+```bash
+cp .env.example .env.local
+```
 - MongoDB connection string
 - Email configuration
 - JWT secret
@@ -50,13 +53,18 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ```
 RoofShelter/
-├── app/                 # Next.js app directory
-├── components/          # React components
-├── server/             # Express.js backend
-│   ├── models/         # MongoDB models
-│   └── routes/         # API routes
-├── public/             # Static assets
-└── lib/                # Utility functions
+├── src/
+│   ├── app/            # Next.js 14 App Router
+│   │   ├── api/        # API routes
+│   │   ├── globals.css # Global styles
+│   │   ├── layout.tsx  # Root layout
+│   │   └── page.tsx    # Home page
+│   ├── components/     # React components
+│   ├── lib/           # Database models & utilities
+│   ├── types/         # TypeScript type definitions
+│   └── utils/         # Utility functions
+├── public/            # Static assets
+└── .env.example       # Environment variables template
 ```
 
 ## API Endpoints
