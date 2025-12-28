@@ -1,6 +1,7 @@
 'use client'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PageHero from '@/components/PageHero'
 import Image from 'next/image'
 
 export default function About() {
@@ -9,27 +10,6 @@ export default function About() {
       <style jsx>{`
         .page-wrapper {
           background: #ffffff;
-        }
-        .breadcrumb-section {
-          background: url('/images/about.jpeg');
-          background-size: cover;
-          background-position: center;
-          padding: 200px 0 200px;
-          text-align: center;
-        }
-        .breadcrumb-content h1 {
-          font-size: 72px;
-          font-weight: 700;
-          color: black;
-          margin-bottom: 20px;
-        }
-        .breadcrumb-nav {
-          color: rgba(255,255,255,0.8);
-          font-size: 16px;
-        }
-        .breadcrumb-nav a {
-          color: var(--suntop-base);
-          text-decoration: none;
         }
         
         .intro-section {
@@ -294,9 +274,6 @@ export default function About() {
         }
         
         @media (max-width: 768px) {
-          .breadcrumb-content h1 {
-            font-size: 32px;
-          }
           .intro-wrapper {
             grid-template-columns: 1fr;
             gap: 40px;
@@ -321,15 +298,7 @@ export default function About() {
       <div className="page-wrapper">
         <Header />
         
-        {/* Breadcrumb */}
-        <section className="breadcrumb-section">
-          <div className="container">
-            <div className="breadcrumb-content">
-              <h1>About Us</h1>
-              
-            </div>
-          </div>
-        </section>
+        <PageHero title="About Us" />
 
         {/* Intro Section */}
         <section className="intro-section">
