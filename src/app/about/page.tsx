@@ -137,7 +137,7 @@ export default function About() {
         }
         .intro-image img {
           width: 100%;
-          height: 600px;
+          height: 300px;
           object-fit: cover;
         }
         .intro-btn {
@@ -274,24 +274,217 @@ export default function About() {
         }
         
         @media (max-width: 768px) {
+          .page-wrapper {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+          }
+          
+          .intro-section {
+            padding: 20px 15px !important;
+            background: transparent !important;
+          }
+          
           .intro-wrapper {
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
           }
-          .values-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
+          
+          .intro-content {
+            background: rgba(255,255,255,0.95) !important;
+            padding: 25px !important;
+            border-radius: 25px !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            text-align: center !important;
           }
-          .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+          
+          .intro-badge {
+            font-size: 12px !important;
+            padding: 8px 20px !important;
+            margin-bottom: 15px !important;
           }
-          .team-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
+          
+          .intro-content h2 {
+            font-size: 28px !important;
+            margin-bottom: 15px !important;
           }
+          
+          .intro-text {
+            font-size: 14px !important;
+            margin-bottom: 20px !important;
+            line-height: 1.5 !important;
+          }
+          
           .intro-features {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 10px !important;
+          }
+          
+          .intro-feature {
+            padding: 15px 10px !important;
+            border-radius: 12px !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+            text-align: center !important;
+          }
+          
+          .intro-feature i {
+            font-size: 20px !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 10px !important;
+          }
+          
+          .intro-feature span {
+            font-size: 12px !important;
+          }
+          
+          .intro-image {
+            background: rgba(255,255,255,0.95) !important;
+            padding: 15px !important;
+            border-radius: 20px !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            text-align: center !important;
+          }
+          
+          .intro-image img {
+            content: url('/images/about1.png') !important;
+            width: 100% !important;
+            max-width: 240px !important;
+            height: 140px !important;
+            object-fit: cover !important;
+            border-radius: 12px !important;
+            display: block !important;
+            margin: 0 auto 15px !important;
+          }
+          
+          .btn-primary {
+            width: 100% !important;
+            padding: 15px !important;
+            font-size: 14px !important;
+            border-radius: 12px !important;
+            margin-top: 15px !important;
+          }
+          
+          .values-section {
+            padding: 20px 15px !important;
+            background: transparent !important;
+          }
+          
+          .section-title {
+            margin-bottom: 25px !important;
+            text-align: center !important;
+          }
+          
+          .section-title h2 {
+            font-size: 24px !important;
+            margin-bottom: 15px !important;
+          }
+          
+          .section-title p {
+            font-size: 14px !important;
+            padding: 0 10px !important;
+          }
+          
+          .values-grid {
+            grid-template-columns: 1fr !important;
+            gap: 15px !important;
+          }
+          
+          .value-item {
+            background: rgba(255,255,255,0.95) !important;
+            padding: 25px 20px !important;
+            border-radius: 20px !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+          }
+          
+          .value-icon {
+            width: 60px !important;
+            height: 60px !important;
+            margin-bottom: 15px !important;
+          }
+          
+          .value-icon i {
+            font-size: 24px !important;
+          }
+          
+          .value-item h3 {
+            font-size: 18px !important;
+            margin-bottom: 10px !important;
+          }
+          
+          .value-item p {
+            font-size: 13px !important;
+          }
+          
+          .stats-section {
+            padding: 20px 15px !important;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
+            margin: 20px 15px !important;
+            border-radius: 25px !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+          }
+          
+          .stats-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 15px !important;
+          }
+          
+          .stat-item {
+            background: rgba(255,255,255,0.05) !important;
+            padding: 20px 15px !important;
+            border-radius: 18px !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+          }
+          
+          .stat-number {
+            font-size: 32px !important;
+            margin-bottom: 8px !important;
+          }
+          
+          .stat-label {
+            font-size: 12px !important;
+          }
+          
+          .team-section {
+            padding: 20px 15px !important;
+            background: transparent !important;
+          }
+          
+          .team-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          
+          .team-member {
+            background: rgba(255,255,255,0.95) !important;
+            border-radius: 20px !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid rgba(255,255,255,0.3) !important;
+            overflow: hidden !important;
+          }
+          
+          .team-photo {
+            height: 200px !important;
+          }
+          
+          .team-info {
+            padding: 20px !important;
+          }
+          
+          .team-info h3 {
+            font-size: 18px !important;
+            margin-bottom: 8px !important;
+          }
+          
+          .team-info p {
+            font-size: 14px !important;
           }
         }
       `}</style>
