@@ -73,7 +73,7 @@ export default function Footer() {
               <div className="footer-widget-one__contact-text2">
                 <h2>Contact</h2>
                 <p><a href="tel:+61434115094">+61 434115094</a></p>
-                <p><a href="mailto:example@gmail.com">example@gmail.com</a></p>
+                <p><a href="mailto:parmindersinghasr@yahoo.com">parmindersinghasr@yahoo.com</a></p>
               </div>
             </div>
           </div>
