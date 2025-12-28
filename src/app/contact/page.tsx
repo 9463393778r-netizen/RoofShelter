@@ -975,7 +975,7 @@ export default function Contact() {
             fontWeight: 600,
             animation: 'slideIn 0.5s ease'
           }}>
-            ✅ Your message sent successfully! We'll get back to you soon.
+            ✅ Your message sent successfully! We&apos;ll get back to you soon.
           </div>
         )}
 
