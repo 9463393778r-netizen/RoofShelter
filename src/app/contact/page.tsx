@@ -207,7 +207,7 @@ export default function Contact() {
                   </div>
                   <div className="contact-details">
                     <h3>Our Location</h3>
-                    <p>Melbourne, Victoria<br />Australia</p>
+                    <p>2/12-16 Prospect Street<br />Rosehill NSW 2142<br />Australia</p>
                   </div>
                 </div>
                 
@@ -294,7 +294,7 @@ export default function Contact() {
           <div className="container">
             <div className="map-container">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153167!3d-37.81720997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635749234567!5m2!1sen!2sau"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.8234567890123!2d151.0234567890123!3d-33.8234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a1234567890a%3A0x1234567890abcdef!2s2%2F12-16%20Prospect%20St%2C%20Rosehill%20NSW%202142%2C%20Australia!5e0!3m2!1sen!2sau!4v1635749234567!5m2!1sen!2sau"
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade">
