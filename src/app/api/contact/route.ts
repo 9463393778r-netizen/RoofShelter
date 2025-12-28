@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: 'parmindersinghasr@yahoo.com',
+      to: '9463393778r@gmail.com',
       subject: subject,
       html: htmlContent
     })
