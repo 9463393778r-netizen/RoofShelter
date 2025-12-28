@@ -2,7 +2,7 @@
 
 A Next.js MERN stack application for roofing services, converted from the Suntop HTML template.
 
-## Feature
+## Features
 
 - **Next.js 14** with App Router
 - **MongoDB** database with Mongoose
