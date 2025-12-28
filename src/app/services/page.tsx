@@ -1,298 +1,823 @@
 'use client'
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 
-gsap.registerPlugin(ScrollTrigger)
-
-const services = [
-  {
-    id: 1,
-    title: 'Residential Roofing',
-    subtitle: 'Complete Home Solutions',
-    description: 'Premium residential roofing services with lifetime warranties. From new installations to emergency repairs, we protect your most valuable investment.',
-    features: ['25-Year Warranty', 'Emergency Response', 'Insurance Claims', 'Free Inspections'],
-    image: '/images/services/services-v1-img1.jpg',
-    icon: '🏠',
-    price: 'From $8,500'
-  },
-  {
-    id: 2,
-    title: 'Commercial Roofing',
-    subtitle: 'Industrial Excellence',
-    description: 'Large-scale commercial roofing solutions for businesses. Minimize downtime with our efficient project management and premium materials.',
-    features: ['Project Management', 'Minimal Downtime', 'Safety Certified', 'Maintenance Plans'],
-    image: '/images/services/services-v1-img2.jpg',
-    icon: '🏢',
-    price: 'Custom Quote'
-  },
-  {
-    id: 3,
-    title: 'Roof Restoration',
-    subtitle: 'Extend Roof Lifespan',
-    description: 'Advanced restoration techniques that can extend your roof life by 15+ years. Eco-friendly solutions with superior performance.',
-    features: ['15+ Year Extension', 'Eco-Friendly', 'Energy Efficient', 'Cost Effective'],
-    image: '/images/services/services-v1-img3.jpg',
-    icon: '🔄',
-    price: 'From $4,200'
-  },
-  {
-    id: 4,
-    title: 'Emergency Repairs',
-    subtitle: '24/7 Response Team',
-    description: 'Rapid response emergency roofing services. Our certified technicians are available 24/7 to protect your property from further damage.',
-    features: ['24/7 Availability', 'Rapid Response', 'Temporary Solutions', 'Insurance Direct'],
-    image: '/images/services/services-v1-img4.jpg',
-    icon: '🚨',
-    price: 'From $350'
-  },
-  {
-    id: 5,
-    title: 'Gutter Systems',
-    subtitle: 'Complete Water Management',
-    description: 'Professional gutter installation and maintenance. Protect your foundation with our premium seamless gutter systems.',
-    features: ['Seamless Design', 'Leaf Protection', 'Foundation Safety', '10-Year Warranty'],
-    image: '/images/services/services-v1-img5.jpg',
-    icon: '💧',
-    price: 'From $1,800'
-  },
-  {
-    id: 6,
-    title: 'Solar Integration',
-    subtitle: 'Future-Ready Roofing',
-    description: 'Solar-ready roofing installations and retrofits. Maximize energy efficiency with our integrated solar roofing solutions.',
-    features: ['Solar Ready', 'Energy Savings', 'Tax Incentives', 'Smart Integration'],
-    image: '/images/services/services-v1-img6.jpg',
-    icon: '☀️',
-    price: 'From $12,000'
-  }
-]
-
-export default function ServicesPage() {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const servicesRef = useRef<HTMLDivElement>(null)
-  const statsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero Animation
-      gsap.from('.hero-title', {
-        y: 100,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out'
-      })
-      
-      gsap.from('.hero-subtitle', {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.3,
-        ease: 'power3.out'
-      })
-
-      gsap.from('.hero-description', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.6,
-        ease: 'power3.out'
-      })
-
-      // Services Cards Animation
-      gsap.from('.service-card', {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.services-grid',
-          start: 'top 80%'
-        }
-      })
-
-      // Stats Animation
-      gsap.from('.stat-item', {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: '.stats-section',
-          start: 'top 80%'
-        }
-      })
-
-      // Floating Animation for Icons
-      gsap.to('.service-icon', {
-        y: -10,
-        duration: 2,
-        ease: 'power2.inOut',
-        yoyo: true,
-        repeat: -1,
-        stagger: 0.3
-      })
-
-    }, heroRef)
-
-    return () => ctx.revert()
-  }, [])
-
+export default function Services() {
   return (
-    <div className="page-wrapper bg-gradient-to-br from-slate-50 to-white">
-      <Header />
-      
-      {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-blue-500/5"></div>
-        <div className="absolute top-20 right-20 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    <>
+      <style jsx>{`
+        .page-wrapper {
+          background: #ffffff;
+        }
+        .breadcrumb-section {
+          background: url('/images/modified.jpg');
+          background-size: cover;
+          background-position: center;
+          padding: 200px 0 200px;
+          text-align: center;
+          position: relative;
+        }
+        .breadcrumb-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.5);
+        }
+        .breadcrumb-content {
+          position: relative;
+          z-index: 2;
+        }
+        .breadcrumb-content h1 {
+          font-size: 72px;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 20px;
+        }
+        .breadcrumb-nav {
+          color: rgba(255,255,255,0.8);
+          font-size: 16px;
+        }
+        .breadcrumb-nav a {
+          color: var(--suntop-base);
+          text-decoration: none;
+        }
         
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="hero-title text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 bg-clip-text text-transparent leading-tight">
-              Premium Roofing Services
-            </h1>
-            <p className="hero-subtitle text-2xl md:text-3xl font-semibold text-slate-600 mb-8">
-              Crafting Excellence Above Your Head
-            </p>
-            <p className="hero-description text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              Experience unmatched quality with our comprehensive roofing solutions. From residential homes to commercial complexes, we deliver perfection that lasts generations.
-            </p>
+        .intro-section {
+          padding: 120px 40px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,250,252,0.98)), url('/images/10004.png');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .intro-section::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255,107,53,0.05) 0%, transparent 70%);
+          animation: float 20s ease-in-out infinite;
+        }
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          33% { transform: translate(30px, -30px) rotate(120deg); }
+          66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+        .intro-section .container {
+          position: relative;
+          z-index: 2;
+        }
+        .intro-badge {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          color: white;
+          padding: 12px 30px;
+          border-radius: 30px;
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 25px;
+          box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        .btn-primary {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          color: white;
+          padding: 20px 40px;
+          border-radius: 12px;
+          font-weight: 700;
+          text-decoration: none;
+          transition: all 0.4s ease;
+          box-shadow: 0 8px 30px rgba(255,107,53,0.4);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-size: 16px;
+        }
+        .btn-primary:hover {
+          transform: translateY(-4px) scale(1.05);
+          box-shadow: 0 15px 40px rgba(255,107,53,0.5);
+        }
+        .intro-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+          position: relative;
+        }
+        .contact-info {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          z-index: 5;
+        }
+        .contact-item {
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+          color: #1a202c;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .intro-content h2 {
+          font-size: 48px;
+          font-weight: 900;
+          color: #1a202c;
+          margin-bottom: 30px;
+          line-height: 1.1;
+          position: relative;
+        }
+        .intro-content h2::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          border-radius: 2px;
+        }
+        .intro-text {
+          font-size: 20px;
+          color: #4a5568;
+          line-height: 1.8;
+          margin-bottom: 45px;
+          font-weight: 400;
+        }
+        .intro-features {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+        .intro-feature {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          background: linear-gradient(135deg, #f8fafc, #ffffff);
+          padding: 25px;
+          border-radius: 15px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+          border: 2px solid rgba(255,107,53,0.1);
+          transition: all 0.4s ease;
+          position: relative;
+        }
+        .intro-feature::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          transform: scaleY(0);
+          transition: transform 0.3s ease;
+        }
+        .intro-feature:hover::before {
+          transform: scaleY(1);
+        }
+        .intro-feature:hover {
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 20px 40px rgba(255,107,53,0.15);
+          border-color: rgba(255,107,53,0.3);
+        }
+        .intro-feature i {
+          color: var(--suntop-base);
+          font-size: 24px;
+          width: 50px;
+          height: 50px;
+          background: rgba(255,107,53,0.1);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .intro-feature span {
+          font-weight: 700;
+          color: #2d3748;
+          font-size: 16px;
+        }
+        .circular-component {
+          width: 400px;
+          height: 400px;
+          position: relative;
+          margin: 0 auto;
+          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+        }
+        .circular-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 150px;
+          height: 150px;
+          background: linear-gradient(135deg, #ffffff, #f8fafc);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.2), inset 0 2px 10px rgba(255,255,255,0.8);
+          z-index: 10;
+          border: 3px solid rgba(255,107,53,0.1);
+        }
+        .circular-center img {
+          width: 100px;
+          height: auto;
+        }
+        .rotating-services {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          animation: rotate 20s linear infinite;
+        }
+        .service-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 320px;
+          height: 320px;
+          color: #374151;
+          font-weight: 700;
+          font-size: 12px;
+          text-align: center;
+        }
+        .service-text svg {
+          width: 100%;
+          height: 100%;
+        }
+        .service-text textPath {
+          fill: #111827;
+          font-weight: 700;
+          font-size: 20px;
+          letter-spacing: 2px;
+        }
+        .circular-ring {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 320px;
+          height: 320px;
+          border: 8px solid #111827;
+          border-radius: 50%;
+          background: transparent;
+        }
+        @keyframes rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes counter-rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(-360deg); }
+        }
+        
+        .services-section {
+          padding: 100px 0;
+          background: #f8f9fa;
+        }
+        .section-title {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+        .section-title h2 {
+          font-size: 48px;
+          font-weight: 900;
+          color: #1a202c;
+          margin-bottom: 30px;
+          line-height: 1.1;
+          position: relative;
+        }
+        .section-title h2::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          border-radius: 2px;
+        }
+        .section-title p {
+          font-size: 18px;
+          color: #4a5568;
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+        }
+        .service-item {
+          background: white;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          transition: all 0.4s ease;
+          position: relative;
+        }
+        .service-item:hover {
+          transform: translateY(-15px) scale(1.02);
+          box-shadow: 0 25px 50px rgba(255,107,53,0.2);
+        }
+        .service-image {
+          height: 250px;
+          overflow: hidden;
+          position: relative;
+        }
+        .service-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+        .service-item:hover .service-image img {
+          transform: scale(1.1);
+        }
+        .service-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .service-item:hover .service-overlay {
+          opacity: 0.9;
+        }
+        .service-icon {
+          font-size: 48px;
+          color: white;
+        }
+        .service-content {
+          padding: 30px;
+        }
+        .service-content h3 {
+          font-size: 24px;
+          font-weight: 700;
+          color: #1a202c;
+          margin-bottom: 15px;
+        }
+        .service-content p {
+          font-size: 16px;
+          color: #4a5568;
+          line-height: 1.6;
+          margin-bottom: 20px;
+        }
+        .service-features {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 25px;
+        }
+        .service-features li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 8px;
+          font-size: 14px;
+          color: #4a5568;
+        }
+        .service-features li i {
+          color: var(--suntop-base);
+          font-size: 12px;
+        }
+        .service-price {
+          font-size: 20px;
+          font-weight: 700;
+          color: var(--suntop-base);
+          margin-bottom: 20px;
+        }
+        
+        .process-section {
+          padding: 100px 0;
+          background: white;
+        }
+        .process-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 40px;
+        }
+        .process-item {
+          text-align: center;
+          position: relative;
+        }
+        .process-item::after {
+          content: '';
+          position: absolute;
+          top: 40px;
+          right: -20px;
+          width: 40px;
+          height: 2px;
+          background: var(--suntop-base);
+          opacity: 0.3;
+        }
+        .process-item:last-child::after {
+          display: none;
+        }
+        .process-number {
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 25px;
+          font-size: 24px;
+          font-weight: 700;
+          color: white;
+        }
+        .process-item h3 {
+          font-size: 20px;
+          font-weight: 600;
+          color: #1a202c;
+          margin-bottom: 15px;
+        }
+        .process-item p {
+          font-size: 15px;
+          color: #4a5568;
+          line-height: 1.6;
+        }
+        
+        .stats-section {
+          padding: 80px 0;
+          background: var(--suntop-base);
+          color: white;
+        }
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 40px;
+        }
+        .stat-item {
+          text-align: center;
+        }
+        .stat-number {
+          font-size: 48px;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+        .stat-label {
+          font-size: 16px;
+          opacity: 0.9;
+        }
+        
+        .cta-section {
+          padding: 100px 0;
+          background: url('/images/backgrounds/cta-v1-bg.jpg');
+          background-size: cover;
+          background-position: center;
+          position: relative;
+        }
+        .cta-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.7);
+        }
+        .cta-content {
+          position: relative;
+          z-index: 2;
+          text-align: center;
+          color: white;
+        }
+        .cta-content h2 {
+          font-size: 48px;
+          font-weight: 900;
+          margin-bottom: 20px;
+        }
+        .cta-content p {
+          font-size: 20px;
+          margin-bottom: 40px;
+          opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+          .breadcrumb-content h1 {
+            font-size: 32px;
+          }
+          .intro-wrapper {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+          .services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+          .process-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+          }
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+          }
+          .intro-features {
+            grid-template-columns: 1fr;
+          }
+          .process-item::after {
+            display: none;
+          }
+        }
+      `}</style>
+      <div className="page-wrapper">
+        <Header />
+        
+        {/* Breadcrumb */}
+        <section className="breadcrumb-section">
+          <div className="container">
+            <div className="breadcrumb-content">
+              <h1>Our Services</h1>
+              
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services Grid */}
-      <section ref={servicesRef} className="py-24 relative">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20">
-            <span className="inline-block px-6 py-3 bg-orange-500 text-white rounded-full font-semibold text-sm tracking-wide uppercase mb-6">
-              Our Expertise
-            </span>
-            <h2 className="text-5xl font-black text-slate-800 mb-6">
-              Complete Roofing Solutions
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Every project is a masterpiece. Every roof tells a story of excellence, durability, and uncompromising quality.
-            </p>
-          </div>
-
-          <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={service.id} className="service-card group">
-                <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-slate-100 overflow-hidden">
-                  {/* Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Service Icon */}
-                  <div className="service-icon text-6xl mb-6 relative z-10">
-                    {service.icon}
+        {/* Intro Section */}
+        <section className="intro-section">
+          <div className="container">
+            <div className="intro-wrapper">
+              <div className="intro-content">
+                <span className="intro-badge">Professional Services</span>
+                <h2>Complete Roofing Solutions</h2>
+                <p className="intro-text">
+                  From residential repairs to commercial installations, we provide comprehensive roofing services that protect your property and enhance its value. Our experienced team uses premium materials and proven techniques to deliver lasting results.
+                </p>
+                <div className="intro-features">
+                  <div className="intro-feature">
+                    <i className="fas fa-shield-alt"></i>
+                    <span>Lifetime Warranty</span>
                   </div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-2xl font-bold text-slate-800 group-hover:text-orange-600 transition-colors">
-                        {service.title}
-                      </h3>
-                      <span className="text-sm font-semibold text-orange-600 bg-orange-100 px-3 py-1 rounded-full">
-                        {service.price}
-                      </span>
-                    </div>
-                    
-                    <p className="text-orange-600 font-semibold mb-4">{service.subtitle}</p>
-                    <p className="text-slate-600 mb-6 leading-relaxed">{service.description}</p>
-                    
-                    {/* Features */}
-                    <div className="space-y-2 mb-6">
-                      {service.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-slate-600">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* CTA Button */}
-                    <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                      Get Quote
-                    </button>
+                  <div className="intro-feature">
+                    <i className="fas fa-clock"></i>
+                    <span>24/7 Emergency</span>
                   </div>
-                  
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-transparent rounded-full"></div>
-                  <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-blue-500/10 to-transparent rounded-full"></div>
+                  <div className="intro-feature">
+                    <i className="fas fa-certificate"></i>
+                    <span>Licensed & Insured</span>
+                  </div>
+                  <div className="intro-feature">
+                    <i className="fas fa-thumbs-up"></i>
+                    <span>100% Satisfaction</span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section ref={statsRef} className="stats-section py-24 bg-gradient-to-r from-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/pattern/error-page-pattern.png')] opacity-5"></div>
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-black text-white mb-6">
-              Proven Excellence
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Numbers that speak to our commitment to quality and customer satisfaction
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '2,500+', label: 'Projects Completed', icon: '🏆' },
-              { number: '25+', label: 'Years Experience', icon: '⭐' },
-              { number: '98%', label: 'Customer Satisfaction', icon: '❤️' },
-              { number: '24/7', label: 'Emergency Service', icon: '🚨' }
-            ].map((stat, index) => (
-              <div key={index} className="stat-item text-center">
-                <div className="text-4xl mb-4">{stat.icon}</div>
-                <div className="text-4xl md:text-5xl font-black text-orange-500 mb-2">
-                  {stat.number}
+              <div className="circular-component">
+                <div className="circular-center">
+                  <Image src="/images/logo.png" alt="RoofShelter Logo" width={100} height={60} />
                 </div>
-                <div className="text-slate-300 font-semibold">
-                  {stat.label}
+                <div className="rotating-services">
+                  <div className="circular-ring"></div>
+                  <div className="service-text">
+                    <svg>
+                      <defs>
+                        <path id="circle" d="M 160,160 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" />
+                      </defs>
+                      <text>
+                        <textPath href="#circle">
+                          RESIDENTIAL • COMMERCIAL • RESTORATION • EMERGENCY • GUTTERS • SOLAR • 
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
                 </div>
               </div>
-            ))}
+              <div className="contact-info">
+                <div className="contact-item">parmindersinghasr@gmail.com</div>
+                <div className="contact-item">+61 434115094</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-orange-500 to-orange-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-5xl font-black text-white mb-6">
-            Ready to Transform Your Roof?
-          </h2>
-          <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust RoofShelter for their roofing needs. Get your free consultation today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-xl">
-              Get Free Quote
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105">
-              Call (555) 123-4567
-            </button>
+        {/* Services Section */}
+        <section className="services-section">
+          <div className="container">
+            <div className="section-title">
+              <h2>Our Expert Services</h2>
+              <p>We offer a comprehensive range of roofing services to meet all your residential and commercial needs with exceptional quality and reliability.</p>
+            </div>
+            <div className="services-grid">
+              <div className="service-item">
+                <div className="service-image">
+                  <Image src="/images/services/services-v1-img1.jpg" alt="Residential Roofing" width={400} height={250} />
+                  <div className="service-overlay">
+                    <i className="fas fa-home service-icon"></i>
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h3>Residential Roofing</h3>
+                  <p>Complete home roofing solutions including new installations, repairs, and maintenance for all roof types.</p>
+                  <ul className="service-features">
+                    <li><i className="fas fa-check"></i> New Roof Installation</li>
+                    <li><i className="fas fa-check"></i> Roof Repairs & Maintenance</li>
+                    <li><i className="fas fa-check"></i> Storm Damage Restoration</li>
+                    <li><i className="fas fa-check"></i> Insurance Claims Assistance</li>
+                  </ul>
+                  <div className="service-price">Starting from $8,500</div>
+                  <a href="/contact" className="btn-primary">Get Quote</a>
+                </div>
+              </div>
+
+              <div className="service-item">
+                <div className="service-image">
+                  <Image src="/images/services/services-v1-img2.jpg" alt="Commercial Roofing" width={400} height={250} />
+                  <div className="service-overlay">
+                    <i className="fas fa-building service-icon"></i>
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h3>Commercial Roofing</h3>
+                  <p>Professional commercial roofing services for businesses, warehouses, and industrial facilities.</p>
+                  <ul className="service-features">
+                    <li><i className="fas fa-check"></i> Flat Roof Systems</li>
+                    <li><i className="fas fa-check"></i> Metal Roofing</li>
+                    <li><i className="fas fa-check"></i> Preventive Maintenance</li>
+                    <li><i className="fas fa-check"></i> Energy Efficient Solutions</li>
+                  </ul>
+                  <div className="service-price">Custom Pricing</div>
+                  <a href="/contact" className="btn-primary">Get Quote</a>
+                </div>
+              </div>
+
+              <div className="service-item">
+                <div className="service-image">
+                  <Image src="/images/services/services-v1-img3.jpg" alt="Roof Restoration" width={400} height={250} />
+                  <div className="service-overlay">
+                    <i className="fas fa-sync-alt service-icon"></i>
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h3>Roof Restoration</h3>
+                  <p>Extend your roof's lifespan with our professional restoration services using advanced techniques.</p>
+                  <ul className="service-features">
+                    <li><i className="fas fa-check"></i> Roof Cleaning & Coating</li>
+                    <li><i className="fas fa-check"></i> Leak Detection & Repair</li>
+                    <li><i className="fas fa-check"></i> Waterproofing Solutions</li>
+                    <li><i className="fas fa-check"></i> 15+ Year Extension</li>
+                  </ul>
+                  <div className="service-price">Starting from $4,200</div>
+                  <a href="/contact" className="btn-primary">Get Quote</a>
+                </div>
+              </div>
+
+              <div className="service-item">
+                <div className="service-image">
+                  <Image src="/images/services/services-v1-img4.jpg" alt="Emergency Repairs" width={400} height={250} />
+                  <div className="service-overlay">
+                    <i className="fas fa-exclamation-triangle service-icon"></i>
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h3>Emergency Repairs</h3>
+                  <p>24/7 emergency roofing services to protect your property from further damage during storms.</p>
+                  <ul className="service-features">
+                    <li><i className="fas fa-check"></i> 24/7 Availability</li>
+                    <li><i className="fas fa-check"></i> Rapid Response Team</li>
+                    <li><i className="fas fa-check"></i> Temporary Solutions</li>
+                    <li><i className="fas fa-check"></i> Insurance Direct Billing</li>
+                  </ul>
+                  <div className="service-price">Starting from $350</div>
+                  <a href="/contact" className="btn-primary">Call Now</a>
+                </div>
+              </div>
+
+              <div className="service-item">
+                <div className="service-image">
+                  <Image src="/images/services/services-v1-img5.jpg" alt="Gutter Systems" width={400} height={250} />
+                  <div className="service-overlay">
+                    <i className="fas fa-tint service-icon"></i>
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h3>Gutter Systems</h3>
+                  <p>Complete gutter installation, repair, and maintenance services to protect your foundation.</p>
+                  <ul className="service-features">
+                    <li><i className="fas fa-check"></i> Seamless Gutters</li>
+                    <li><i className="fas fa-check"></i> Gutter Guards</li>
+                    <li><i className="fas fa-check"></i> Downspout Installation</li>
+                    <li><i className="fas fa-check"></i> Regular Maintenance</li>
+                  </ul>
+                  <div className="service-price">Starting from $1,800</div>
+                  <a href="/contact" className="btn-primary">Get Quote</a>
+                </div>
+              </div>
+
+              <div className="service-item">
+                <div className="service-image">
+                  <Image src="/images/services/services-v1-img6.jpg" alt="Solar Integration" width={400} height={250} />
+                  <div className="service-overlay">
+                    <i className="fas fa-solar-panel service-icon"></i>
+                  </div>
+                </div>
+                <div className="service-content">
+                  <h3>Solar Integration</h3>
+                  <p>Solar-ready roofing installations and retrofits for maximum energy efficiency and savings.</p>
+                  <ul className="service-features">
+                    <li><i className="fas fa-check"></i> Solar Panel Installation</li>
+                    <li><i className="fas fa-check"></i> Energy Efficient Roofing</li>
+                    <li><i className="fas fa-check"></i> Tax Incentive Assistance</li>
+                    <li><i className="fas fa-check"></i> Smart Home Integration</li>
+                  </ul>
+                  <div className="service-price">Starting from $12,000</div>
+                  <a href="/contact" className="btn-primary">Get Quote</a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
-    </div>
+        {/* Process Section */}
+        <section className="process-section">
+          <div className="container">
+            <div className="section-title">
+              <h2>Our Work Process</h2>
+              <p>We follow a systematic approach to ensure every project is completed efficiently and to the highest standards.</p>
+            </div>
+            <div className="process-grid">
+              <div className="process-item">
+                <div className="process-number">01</div>
+                <h3>Inspection & Assessment</h3>
+                <p>Thorough evaluation of your roof condition and detailed assessment of repair or replacement needs.</p>
+              </div>
+              <div className="process-item">
+                <div className="process-number">02</div>
+                <h3>Detailed Estimate</h3>
+                <p>Comprehensive quote with material specifications, timeline, and transparent pricing for your project.</p>
+              </div>
+              <div className="process-item">
+                <div className="process-number">03</div>
+                <h3>Professional Installation</h3>
+                <p>Expert installation by certified technicians using premium materials and industry best practices.</p>
+              </div>
+              <div className="process-item">
+                <div className="process-number">04</div>
+                <h3>Quality Assurance</h3>
+                <p>Final inspection and cleanup with comprehensive warranty coverage for your peace of mind.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="stats-section">
+          <div className="container">
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-number">2,500+</div>
+                <div className="stat-label">Projects Completed</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">25+</div>
+                <div className="stat-label">Years Experience</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">98%</div>
+                <div className="stat-label">Customer Satisfaction</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">24/7</div>
+                <div className="stat-label">Emergency Service</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="cta-section">
+          <div className="container">
+            <div className="cta-content">
+              <h2>Ready to Get Started?</h2>
+              <p>Contact us today for a free consultation and estimate. Let our experts help you find the perfect roofing solution.</p>
+              <a href="/contact" className="btn-primary">Get Free Estimate</a>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+      </div>
+    </>
   )
 }
