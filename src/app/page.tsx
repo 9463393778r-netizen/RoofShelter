@@ -14,8 +14,8 @@ export default function Home() {
     <div className="page-wrapper">
       <Header />
       <MainSlider />
-      <Features />
       <About />
+      <Features />
       <SlidingText />
       <Services />
       <Highlights />

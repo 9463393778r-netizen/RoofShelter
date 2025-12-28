@@ -10,7 +10,20 @@ export default function Footer() {
           <div className="site-footer-one__top-inner">
             <div className="footer-widget-one__about">
               <div className="footer-widget-one__about-logo">
-                <Link href="/"><Image src="/images/logo.png" alt="RoofShelter" width={180} height={60} /></Link>
+                <Link href="/">
+                  <Image 
+                    src="/images/logo.png" 
+                    alt="RoofShelter" 
+                    width={180} 
+                    height={60}
+                    style={{
+                      width: 'auto',
+                      height: '60px',
+                      maxWidth: '180px',
+                      objectFit: 'contain'
+                    }}
+                  />
+                </Link>
               </div>
 
               <p className="footer-widget-one__about-text">
