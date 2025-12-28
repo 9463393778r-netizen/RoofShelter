@@ -3,7 +3,11 @@ import nodemailer from 'nodemailer'
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('API called')
+    console.log('API called on Vercel')
+    console.log('Environment check:', {
+      EMAIL_USER: process.env.EMAIL_USER ? 'Set' : 'Missing',
+      EMAIL_PASS: process.env.EMAIL_PASS ? 'Set' : 'Missing'
+    })
     
     const formData = await request.formData()
     const body = {
@@ -150,9 +154,10 @@ export async function POST(request: NextRequest) {
     
     // Don't wait for email, respond immediately
     emailPromise.then(() => {
-      console.log('Email sent successfully')
+      console.log('Email sent successfully on Vercel')
     }).catch((emailError) => {
-      console.error('Email Error:', emailError)
+      console.error('Email Error on Vercel:', emailError.message)
+      console.error('Full error:', emailError)
     })
     
     // Return success immediately
