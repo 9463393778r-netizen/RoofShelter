@@ -671,7 +671,7 @@ export default function Services() {
                 </div>
                 <div className="service-content">
                   <h3>Roof Restoration</h3>
-                  <p>Extend your roof's lifespan with our professional restoration services using advanced techniques.</p>
+                  <p>Extend your roof&apos;s lifespan with our professional restoration services using advanced techniques.</p>
                   <ul className="service-features">
                     <li><i className="fas fa-check"></i> Roof Cleaning & Coating</li>
                     <li><i className="fas fa-check"></i> Leak Detection & Repair</li>
