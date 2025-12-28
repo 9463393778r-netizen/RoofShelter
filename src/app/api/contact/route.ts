@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Create transporter with explicit SMTP settings for Vercel
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       secure: false,
