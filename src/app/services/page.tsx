@@ -338,12 +338,15 @@ export default function Services() {
           height: 250px;
           overflow: hidden;
           position: relative;
+          display: block;
         }
         .service-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          object-position: center !important;
           transition: transform 0.4s ease;
+          display: block !important;
         }
         .service-item:hover .service-image img {
           transform: scale(1.1);
@@ -408,110 +411,312 @@ export default function Services() {
         }
         
         .process-section {
-          padding: 100px 0;
-          background: white;
-        }
-        .process-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 40px;
-        }
-        .process-item {
-          text-align: center;
+          padding: 120px 0;
+          background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
           position: relative;
+          overflow: hidden;
         }
-        .process-item::after {
-          content: '';
-          position: absolute;
-          top: 40px;
-          right: -20px;
-          width: 40px;
-          height: 2px;
-          background: var(--suntop-base);
-          opacity: 0.3;
-        }
-        .process-item:last-child::after {
-          display: none;
-        }
-        .process-number {
-          width: 80px;
-          height: 80px;
-          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 25px;
-          font-size: 24px;
-          font-weight: 700;
-          color: white;
-        }
-        .process-item h3 {
-          font-size: 20px;
-          font-weight: 600;
-          color: #1a202c;
-          margin-bottom: 15px;
-        }
-        .process-item p {
-          font-size: 15px;
-          color: #4a5568;
-          line-height: 1.6;
-        }
-        
-        .stats-section {
-          padding: 80px 0;
-          background: var(--suntop-base);
-          color: white;
-        }
-        .stats-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 40px;
-        }
-        .stat-item {
-          text-align: center;
-        }
-        .stat-number {
-          font-size: 48px;
-          font-weight: 700;
-          margin-bottom: 10px;
-        }
-        .stat-label {
-          font-size: 16px;
-          opacity: 0.9;
-        }
-        
-        .cta-section {
-          padding: 100px 0;
-          background: url('/images/backgrounds/cta-v1-bg.jpg');
-          background-size: cover;
-          background-position: center;
-          position: relative;
-        }
-        .cta-section::before {
+        .process-section::before {
           content: '';
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(0,0,0,0.7);
+          background: url('/images/10003.png');
+          background-size: cover;
+          background-position: center;
+          opacity: 0.1;
         }
-        .cta-content {
+        .process-section .section-title {
           position: relative;
           z-index: 2;
+          margin-bottom: 80px;
+        }
+        .process-section .section-title h2 {
+          color: white;
+          font-size: 52px;
+          text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .process-section .section-title h2::after {
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+        }
+        .process-section .section-title p {
+          color: rgba(255,255,255,0.9);
+          font-size: 20px;
+        }
+        .process-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 50px;
+          position: relative;
+          z-index: 2;
+        }
+        .process-item {
+          text-align: center;
+          position: relative;
+          background: rgba(255,255,255,0.95);
+          padding: 40px 25px;
+          border-radius: 20px;
+          box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+          transition: all 0.4s ease;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,107,53,0.2);
+        }
+        .process-item:hover {
+          transform: translateY(-15px) scale(1.05);
+          box-shadow: 0 25px 60px rgba(255,107,53,0.3);
+          border-color: var(--suntop-base);
+        }
+        .process-item::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: -25px;
+          width: 50px;
+          height: 3px;
+          background: linear-gradient(90deg, var(--suntop-base), var(--suntop-accent));
+          transform: translateY(-50%);
+          border-radius: 2px;
+          box-shadow: 0 2px 10px rgba(255,107,53,0.4);
+        }
+        .process-item:last-child::after {
+          display: none;
+        }
+        .process-number {
+          width: 90px;
+          height: 90px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 30px;
+          font-size: 28px;
+          font-weight: 900;
+          color: white;
+          box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+          position: relative;
+          transition: all 0.3s ease;
+        }
+        .process-number::before {
+          content: '';
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          right: -5px;
+          bottom: -5px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          z-index: -1;
+        }
+        .process-item:hover .process-number::before {
+          opacity: 0.3;
+        }
+        .process-item:hover .process-number {
+          transform: scale(1.1) rotate(360deg);
+        }
+        .process-item h3 {
+          font-size: 22px;
+          font-weight: 700;
+          color: #1a202c;
+          margin-bottom: 20px;
+          position: relative;
+        }
+        .process-item h3::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 2px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          border-radius: 1px;
+        }
+        .process-item p {
+          font-size: 16px;
+          color: #4a5568;
+          line-height: 1.7;
+          font-weight: 400;
+        }
+        
+        .stats-section {
+          padding: 100px 0;
+          background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+          color: white;
+          position: relative;
+          overflow: hidden;
+        }
+        .stats-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(circle at 30% 70%, rgba(255,107,53,0.1) 0%, transparent 50%);
+        }
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 60px;
+          position: relative;
+          z-index: 2;
+        }
+        .stat-item {
+          text-align: center;
+          background: rgba(255,255,255,0.05);
+          padding: 50px 30px;
+          border-radius: 25px;
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255,255,255,0.1);
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .stat-item::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,107,53,0.1), transparent);
+          transition: left 0.6s ease;
+        }
+        .stat-item:hover::before {
+          left: 100%;
+        }
+        .stat-item:hover {
+          transform: translateY(-10px);
+          border-color: rgba(255,107,53,0.3);
+          box-shadow: 0 20px 40px rgba(255,107,53,0.2);
+        }
+        .stat-number {
+          font-size: 56px;
+          font-weight: 900;
+          margin-bottom: 15px;
+          color: white;
+          position: relative;
+        }
+        .stat-label {
+          font-size: 18px;
+          opacity: 0.9;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+        
+        .cta-section {
+          background: linear-gradient(rgba(255, 107, 53, 0.8), rgba(255, 107, 53, 0.8)), url('/images/getReady.png');
+          background-size: cover;
+          background-position: center;
+          padding: 80px 0;
           text-align: center;
           color: white;
         }
+
+        .cta-content {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .cta-icon {
+          width: 80px;
+          height: 80px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 30px;
+          backdrop-filter: blur(10px);
+          border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-icon i {
+          font-size: 32px;
+          color: white;
+        }
+
         .cta-content h2 {
           font-size: 48px;
-          font-weight: 900;
+          font-weight: 700;
           margin-bottom: 20px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+
         .cta-content p {
           font-size: 20px;
           margin-bottom: 40px;
-          opacity: 0.9;
+          opacity: 0.95;
+        }
+
+        .cta-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          margin-bottom: 50px;
+          flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 18px 35px;
+          font-size: 18px;
+          font-weight: 600;
+          text-decoration: none;
+          border-radius: 50px;
+          transition: all 0.3s ease;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+          background: white;
+          color: #1a202c;
+        }
+
+        .btn-primary:hover {
+          background: #f7fafc;
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+          background: white;
+          color: #ff6b35;
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-features {
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+          flex-wrap: wrap;
+        }
+
+        .feature {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 16px;
+          font-weight: 500;
+        }
+
+        .feature i {
+          font-size: 20px;
+          color: #ffd700;
         }
         
         @media (max-width: 768px) {
@@ -539,6 +744,23 @@ export default function Services() {
           }
           .process-item::after {
             display: none;
+          }
+          .cta-content h2 {
+            font-size: 36px;
+          }
+          
+          .cta-content p {
+            font-size: 18px;
+          }
+          
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+          
+          .cta-features {
+            flex-direction: column;
+            gap: 20px;
           }
         }
       `}</style>
@@ -612,6 +834,30 @@ export default function Services() {
           </div>
         </section>
 
+        {/* Stats Section */}
+        <section className="stats-section">
+          <div className="container">
+            <div className="stats-grid">
+              <div className="stat-item">
+                <div className="stat-number">150+</div>
+                <div className="stat-label">Projects Completed</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">3+</div>
+                <div className="stat-label">Years Experience</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">100%</div>
+                <div className="stat-label">Customer Satisfaction</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">24/7</div>
+                <div className="stat-label">Emergency Service</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Section */}
         <section className="services-section">
           <div className="container">
@@ -622,7 +868,7 @@ export default function Services() {
             <div className="services-grid">
               <div className="service-item">
                 <div className="service-image">
-                  <Image src="/images/services/services-v1-img1.jpg" alt="Residential Roofing" width={400} height={250} />
+                  <Image src="/images/residentailRoofing.webp" alt="Residential Roofing" width={485} height={250} />
                   <div className="service-overlay">
                     <i className="fas fa-home service-icon"></i>
                   </div>
@@ -643,7 +889,7 @@ export default function Services() {
 
               <div className="service-item">
                 <div className="service-image">
-                  <Image src="/images/services/services-v1-img2.jpg" alt="Commercial Roofing" width={400} height={250} />
+                  <Image src="/images/commercialRoofing.jpeg" alt="Commercial Roofing" width={485} height={250} />
                   <div className="service-overlay">
                     <i className="fas fa-building service-icon"></i>
                   </div>
@@ -664,7 +910,7 @@ export default function Services() {
 
               <div className="service-item">
                 <div className="service-image">
-                  <Image src="/images/services/services-v1-img3.jpg" alt="Roof Restoration" width={400} height={250} />
+                  <Image src="/images/roofRestoration.jpg" alt="Roof Restoration" width={485} height={250} />
                   <div className="service-overlay">
                     <i className="fas fa-sync-alt service-icon"></i>
                   </div>
@@ -685,7 +931,7 @@ export default function Services() {
 
               <div className="service-item">
                 <div className="service-image">
-                  <Image src="/images/services/services-v1-img4.jpg" alt="Emergency Repairs" width={400} height={250} />
+                  <Image src="/images/emergencyRepair.jpg" alt="Emergency Repairs" width={485} height={250} />
                   <div className="service-overlay">
                     <i className="fas fa-exclamation-triangle service-icon"></i>
                   </div>
@@ -706,7 +952,7 @@ export default function Services() {
 
               <div className="service-item">
                 <div className="service-image">
-                  <Image src="/images/services/services-v1-img5.jpg" alt="Gutter Systems" width={400} height={250} />
+                  <Image src="/images/gutterSystem.webp" alt="Gutter Systems" width={485} height={250} />
                   <div className="service-overlay">
                     <i className="fas fa-tint service-icon"></i>
                   </div>
@@ -727,7 +973,7 @@ export default function Services() {
 
               <div className="service-item">
                 <div className="service-image">
-                  <Image src="/images/services/services-v1-img6.jpg" alt="Solar Integration" width={400} height={250} />
+                  <Image src="/images/slate.jpg" alt="Solar Integration" width={485} height={250} />
                   <div className="service-overlay">
                     <i className="fas fa-solar-panel service-icon"></i>
                   </div>
@@ -781,37 +1027,21 @@ export default function Services() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="stats-section">
-          <div className="container">
-            <div className="stats-grid">
-              <div className="stat-item">
-                <div className="stat-number">2,500+</div>
-                <div className="stat-label">Projects Completed</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">25+</div>
-                <div className="stat-label">Years Experience</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">98%</div>
-                <div className="stat-label">Customer Satisfaction</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">24/7</div>
-                <div className="stat-label">Emergency Service</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="cta-section">
           <div className="container">
             <div className="cta-content">
-              <h2>Ready to Get Started?</h2>
-              <p>Contact us today for a free consultation and estimate. Let our experts help you find the perfect roofing solution.</p>
-              <a href="/contact" className="btn-primary">Get Free Estimate</a>
+              
+              <h2>Ready to Transform Your Roof?</h2>
+              
+              <div className="cta-buttons">
+                <a href="/contact" className="btn-primary">
+                  <i className="fas fa-calculator"></i>
+                  Get Free Estimate
+                </a>
+                
+              </div>
+              
             </div>
           </div>
         </section>
