@@ -2,17 +2,78 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/PageHero'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function Contact() {
+  const [isLoading, setIsLoading] = useState(true)
+  
   useEffect(() => {
-    const nameInput = document.getElementById('name')
-    if (nameInput) {
-      setTimeout(() => {
-        nameInput.focus()
-      }, 500)
-    }
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+      const nameInput = document.getElementById('name')
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), 500)
+      }
+    }, 1500)
+    return () => clearTimeout(timer)
   }, [])
+
+  if (isLoading) {
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        background: '#ffffff',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 9999
+      }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '20px'
+        }}>
+          <div style={{
+            position: 'relative',
+            width: '120px',
+            height: '120px'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: '4px solid #f3f3f3',
+              borderTop: '4px solid #ff6b35',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite'
+            }}></div>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
+            }}>
+              <Image src="/images/logo.png" alt="RoofShelter" width={80} height={50} />
+            </div>
+          </div>
+        </div>
+        <style jsx>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
+      </div>
+    )
+  }
   return (
     <>
       <style jsx>{`
@@ -553,7 +614,7 @@ export default function Contact() {
             <div className="map-container">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.8234567890123!2d151.0234567890123!3d-33.8234567890123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12a1234567890a%3A0x1234567890abcdef!2s2%2F12-16%20Prospect%20St%2C%20Rosehill%20NSW%202142%2C%20Australia!5e0!3m2!1sen!2sau!4v1635749234567!5m2!1sen!2sau"
-                allowFullScreen=""
+                allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade">
               </iframe>

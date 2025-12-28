@@ -149,7 +149,6 @@ export default function Services() {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
             position: relative !important;
             overflow: hidden !important;
-            cursor: pointer !important;
           }
           .services-one__single::before {
             content: '' !important;
