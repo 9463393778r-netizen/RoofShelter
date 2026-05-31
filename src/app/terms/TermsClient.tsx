@@ -532,10 +532,10 @@ export default function TermsClient() {
               </div>
               <div className="terms-body">
                 <p>
-                  These Terms and Conditions (<strong>"Terms"</strong>) govern the provision of roofing and related services by <strong>RoofShelter</strong> (<strong>"we"</strong>, <strong>"us"</strong>, <strong>"our"</strong> or <strong>"the Company"</strong>), trading from 2/12-16 Prospect Street, Rosehill NSW 2142, Australia, telephone +61 434 115 094, email parmindersinghasr@yahoo.com.
+                  These Terms and Conditions (<strong>&quot;Terms&quot;</strong>) govern the provision of roofing and related services by <strong>RoofShelter</strong> (<strong>&quot;we&quot;</strong>, <strong>&quot;us&quot;</strong>, <strong>&quot;our&quot;</strong> or <strong>&quot;the Company&quot;</strong>), trading from 2/12-16 Prospect Street, Rosehill NSW 2142, Australia, telephone +61 434 115 094, email parmindersinghasr@yahoo.com.
                 </p>
                 <p>
-                  By accepting a Quote, signing a Work Order, making a deposit payment, or otherwise engaging our services, you (<strong>"Client"</strong>, <strong>"you"</strong> or <strong>"your"</strong>) agree to be bound by these Terms, which form a legally binding contract between us.
+                  By accepting a Quote, signing a Work Order, making a deposit payment, or otherwise engaging our services, you (<strong>&quot;Client&quot;</strong>, <strong>&quot;you&quot;</strong> or <strong>&quot;your&quot;</strong>) agree to be bound by these Terms, which form a legally binding contract between us.
                 </p>
                 <div className="info-box">
                   <i className="fas fa-info-circle" />
@@ -612,7 +612,7 @@ export default function TermsClient() {
                   <li>Quotes are <strong>GST-inclusive</strong> unless expressly stated otherwise.</li>
                   <li>Site inspections are provided free of charge for jobs within our service area.</li>
                   <li>Verbal estimates are indicative only and not legally binding — a written Quote must be confirmed.</li>
-                  <li>Insurance work quotations are provided directly to your insurer where requested; the Client remains responsible for any gap between the insurer's assessment and our Quote.</li>
+                  <li>Insurance work quotations are provided directly to your insurer where requested; the Client remains responsible for any gap between the insurer&apos;s assessment and our Quote.</li>
                 </ul>
               </div>
             </section>
@@ -661,7 +661,7 @@ export default function TermsClient() {
                   <strong>Late payment.</strong> Amounts outstanding beyond the due date attract interest at <strong>10% per annum</strong> (calculated daily). We also reserve the right to suspend work, retain possession of any materials not yet fixed to the structure, and recover reasonable debt-collection costs.
                 </div>
                 <p>
-                  Progress claims are issued pursuant to the <em>Building and Construction Industry Security of Payment Act 1999</em> (NSW) (<strong>"SOPA"</strong>). You have the right to serve a payment schedule within 10 business days of receiving a progress claim. Failure to provide a payment schedule may result in debt recovery under SOPA.
+                  Progress claims are issued pursuant to the <em>Building and Construction Industry Security of Payment Act 1999</em> (NSW) (<strong>&quot;SOPA&quot;</strong>). You have the right to serve a payment schedule within 10 business days of receiving a progress claim. Failure to provide a payment schedule may result in debt recovery under SOPA.
                 </p>
                 <p>
                   Accepted payment methods: <strong>bank transfer (EFT), credit card (Visa/Mastercard), and cash</strong>. A <strong>1.5% surcharge</strong> applies to credit card transactions. We do not accept cryptocurrency or digital wallets.
@@ -770,7 +770,7 @@ export default function TermsClient() {
                 </ul>
                 <p><strong>Manufacturer Warranties:</strong></p>
                 <p>
-                  Materials carry the manufacturer's own warranty (for example, <strong>Colorbond® BlueScope steel carries a 36-year paint warranty</strong>; tile manufacturers typically offer 30–50 year warranties). Manufacturer warranty claims are subject to the terms of the relevant manufacturer and must be lodged directly with the manufacturer. We will provide reasonable assistance in this process.
+                  Materials carry the manufacturer&apos;s own warranty (for example, <strong>Colorbond® BlueScope steel carries a 36-year paint warranty</strong>; tile manufacturers typically offer 30–50 year warranties). Manufacturer warranty claims are subject to the terms of the relevant manufacturer and must be lodged directly with the manufacturer. We will provide reasonable assistance in this process.
                 </p>
                 <p>
                   To make a warranty claim, contact us at parmindersinghasr@yahoo.com or +61 434 115 094, providing your name, address, date of completion, and a description of the issue. We will inspect the work within <strong>10 Working Days</strong> and, where a valid warranty claim is established, carry out remedial work at no cost.
@@ -984,7 +984,7 @@ export default function TermsClient() {
                 <p><strong>Governing Law:</strong> These Terms are governed by the laws of <strong>New South Wales, Australia</strong>, and the parties submit to the non-exclusive jurisdiction of the courts of NSW.</p>
                 <p><strong>Entire Agreement:</strong> These Terms and the accepted Quote constitute the entire agreement between the parties and supersede all prior negotiations, representations, warranties, or agreements relating to the Services.</p>
                 <p><strong>Severability:</strong> If any clause or part of a clause is found to be invalid, unenforceable, or illegal, it will be severed from these Terms, and the remaining provisions will continue in full force and effect.</p>
-                <p><strong>Waiver:</strong> Failure by either party to enforce any provision of these Terms will not constitute a waiver of that party's rights to enforce it subsequently.</p>
+                <p><strong>Waiver:</strong> Failure by either party to enforce any provision of these Terms will not constitute a waiver of that party&apos;s rights to enforce it subsequently.</p>
                 <p><strong>Assignment:</strong> You may not assign or transfer any rights or obligations under these Terms without our prior written consent. We may subcontract any part of the Services to licensed subcontractors without your consent, but remain responsible for the quality of their work.</p>
                 <p><strong>GST:</strong> Unless otherwise stated, all prices are <strong>inclusive of GST</strong>. We will issue a valid tax invoice for all taxable supplies. Our ABN will appear on all invoices.</p>
                 <p><strong>Photographs:</strong> We may take photographs of the completed work for use in our portfolio and marketing materials. If you do not consent to this, please advise us in writing before commencement.</p>
@@ -1046,4 +1046,3 @@ export default function TermsClient() {
     </>
   )
 }
-
