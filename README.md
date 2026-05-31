@@ -4,7 +4,7 @@ A Next.js MERN stack application for roofing services, converted from the Suntop
 
 ✅ Email functionality enabled with Vercel deployment.
 
-## Features
+## Feature
 
 - **Next.js 14** with App Router
 - **MongoDB** database with Mongoose
