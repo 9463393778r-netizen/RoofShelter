@@ -10,26 +10,14 @@ export default function MainSlider() {
     e.preventDefault()
     const form = e.currentTarget
     const formData = new FormData(form)
-    
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 5000)
-      
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        body: formData,
-        signal: controller.signal
-      })
-      
+      await fetch('/api/contact', { method: 'POST', body: formData, signal: controller.signal })
       clearTimeout(timeoutId)
-      
-      // Always show success
-      form.reset()
-      setShowNotification(true)
-      setTimeout(() => setShowNotification(false), 4000)
-      
-    } catch (error) {
-      // Even on error, show success since emails work
+    } catch {
+      // handled below
+    } finally {
       form.reset()
       setShowNotification(true)
       setTimeout(() => setShowNotification(false), 4000)
@@ -46,207 +34,440 @@ export default function MainSlider() {
   return (
     <>
       <style jsx>{`
-        @media (max-width: 768px) {
-          .main-slider {
-            min-height: 100vh !important;
-            display: flex !important;
-            flex-direction: column !important;
-            position: relative !important;
-          }
-          .main-slider__overlay {
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%) !important;
-          }
+        /* ---- MOBILE FIRST ---- */
+        .main-slider {
+          position: relative;
+          min-height: 100svh;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .main-slider__bg {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+          z-index: 0;
+        }
+        .main-slider__bg.active { opacity: 1; }
+        .main-slider__overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(0,0,0,0.75) 0%,
+            rgba(0,0,0,0.45) 100%
+          );
+          z-index: 1;
+        }
+
+        /* Content */
+        .main-slider__content {
+          position: relative;
+          z-index: 10;
+          padding: 96px 20px 40px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .main-slider__sub-title {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          color: white;
+          padding: 8px 20px;
+          border-radius: 25px;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+          box-shadow: 0 4px 15px rgba(255,107,53,0.35);
+        }
+        .main-slider__title {
+          font-size: 52px;
+          font-weight: 200;
+          color: var(--suntop-base);
+          line-height: 1.0;
+          letter-spacing: 4px;
+          margin-bottom: -6px;
+        }
+        .main-slider__title-two {
+          font-size: 34px;
+          font-weight: 700;
+          color: transparent;
+          -webkit-text-stroke: 2px white;
+          text-stroke: 2px white;
+          letter-spacing: 2px;
+          margin-bottom: 20px;
+          white-space: normal;
+        }
+        .main-slider__text {
+          font-size: 15px;
+          color: rgba(255,255,255,0.88);
+          line-height: 1.6;
+          margin-bottom: 28px;
+          max-width: 360px;
+        }
+        .main-slider__btn .thm-btn {
+          display: inline-block;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          color: white;
+          padding: 14px 32px;
+          border-radius: 30px;
+          font-size: 14px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          text-decoration: none;
+          box-shadow: 0 6px 20px rgba(255,107,53,0.4);
+          transition: all 0.3s ease;
+        }
+        .main-slider__btn .thm-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 30px rgba(255,107,53,0.5);
+        }
+
+        /* Form */
+        .main-slider__form {
+          position: relative;
+          z-index: 20;
+          background: linear-gradient(
+            160deg,
+            rgba(10, 16, 34, 0.92) 0%,
+            rgba(8, 12, 25, 0.94) 55%,
+            rgba(5, 8, 18, 0.96) 100%
+          );
+          border: 1px solid rgba(255,255,255,0.16);
+          border-radius: 22px;
+          backdrop-filter: blur(14px);
+          box-shadow:
+            0 20px 50px rgba(0,0,0,0.38),
+            inset 0 1px 0 rgba(255,255,255,0.08);
+          padding: 26px 20px 22px;
+          width: auto;
+          margin: 0 16px 26px;
+          overflow: hidden;
+        }
+        .main-slider__form::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(circle at top right, rgba(255,107,53,0.18), transparent 52%),
+            radial-gradient(circle at bottom left, rgba(255,255,255,0.08), transparent 48%);
+          pointer-events: none;
+        }
+        .main-slider__form > * {
+          position: relative;
+          z-index: 1;
+        }
+        .quote-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255,107,53,0.15);
+          color: #ffd7c7;
+          border: 1px solid rgba(255,107,53,0.32);
+          border-radius: 999px;
+          padding: 6px 12px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+        .quote-eyebrow::before {
+          content: '';
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: var(--suntop-base);
+          box-shadow: 0 0 10px rgba(255,107,53,0.8);
+        }
+        .main-slider__form .title-box h2 {
+          font-size: 29px;
+          font-weight: 800;
+          color: #ffffff;
+          text-align: left;
+          margin-bottom: 8px;
+          letter-spacing: -0.4px;
+          line-height: 1.08;
+        }
+        .quote-subtitle {
+          color: rgba(255,255,255,0.74);
+          font-size: 13px;
+          line-height: 1.5;
+          margin-bottom: 15px;
+        }
+        .quote-trust {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-bottom: 14px;
+        }
+        .quote-pill {
+          border-radius: 999px;
+          border: 1px solid rgba(255,255,255,0.2);
+          background: rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.88);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.2px;
+          padding: 6px 10px;
+        }
+        .slider-form-group {
+          margin-bottom: 12px;
+        }
+        .slider-form-group input,
+        .slider-form-group select {
+          width: 100%;
+          padding: 13px 15px;
+          border: 1.5px solid rgba(255,255,255,0.22);
+          border-radius: 12px;
+          font-size: 15px;
+          background: rgba(255,255,255,0.1);
+          color: #ffffff;
+          transition: all 0.3s ease;
+          outline: none;
+          appearance: none;
+        }
+        .slider-form-group input:focus,
+        .slider-form-group select:focus {
+          border-color: var(--suntop-base);
+          background: rgba(255,255,255,0.16);
+          box-shadow: 0 0 0 3px rgba(255,107,53,0.24);
+        }
+        .slider-form-group input::placeholder { color: rgba(255,255,255,0.6); }
+        .slider-form-group select option { background: #111827; color: #ffffff; }
+        .slider-submit-btn {
+          width: 100%;
+          padding: 15px 18px;
+          background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent));
+          color: white;
+          border: none;
+          border-radius: 14px;
+          font-size: 15px;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.7px;
+          cursor: pointer;
+          box-shadow: 0 10px 24px rgba(255,107,53,0.36);
+          transition: all 0.3s ease;
+        }
+        .slider-submit-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 16px 34px rgba(255,107,53,0.5);
+        }
+        .quote-note {
+          margin-top: 12px;
+          font-size: 12px;
+          color: rgba(255,255,255,0.66);
+          text-align: center;
+        }
+        .quote-note a {
+          color: #ffd7c7;
+          font-weight: 700;
+        }
+
+        /* Notification */
+        .slider-notification {
+          position: fixed;
+          top: 20px;
+          right: 16px;
+          left: 16px;
+          background: linear-gradient(135deg, #10b981, #059669);
+          color: white;
+          padding: 14px 20px;
+          border-radius: 14px;
+          box-shadow: 0 8px 25px rgba(16,185,129,0.35);
+          z-index: 99999;
+          font-weight: 600;
+          font-size: 14px;
+          text-align: center;
+          animation: notifIn 0.4s ease;
+        }
+        @keyframes notifIn {
+          from { transform: translateY(-20px); opacity: 0; }
+          to   { transform: translateY(0);     opacity: 1; }
+        }
+
+        /* Tablet (640px+) */
+        @media (min-width: 640px) {
+          .main-slider__content { padding: 100px 32px 48px; }
+          .main-slider__title   { font-size: 68px; letter-spacing: 5px; }
+          .main-slider__title-two { font-size: 44px; }
+          .main-slider__text    { font-size: 16px; max-width: 420px; }
+          .main-slider__form    { padding: 34px 30px 26px; max-width: 500px; margin: 0 auto 36px; border-radius: 24px; }
+          .main-slider__form .title-box h2 { font-size: 34px; }
+          .quote-subtitle { font-size: 14px; margin-bottom: 16px; }
+          .slider-notification  { left: auto; max-width: 380px; }
+        }
+
+        /* Small phones (up to 480px) */
+        @media (max-width: 480px) {
           .main-slider__content {
-            flex: 1 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
-            text-align: center !important;
-            padding: 80px 20px 40px !important;
-            z-index: 3 !important;
+            padding: 84px 16px 26px;
           }
           .main-slider__sub-title {
-            background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent)) !important;
-            color: white !important;
-            padding: 8px 20px !important;
-            border-radius: 25px !important;
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            letter-spacing: 1px !important;
-            margin-bottom: 20px !important;
-            box-shadow: 0 4px 15px rgba(255,107,53,0.3) !important;
+            font-size: 11px;
+            letter-spacing: 1.1px;
+            padding: 7px 16px;
+            margin-bottom: 16px;
           }
           .main-slider__title {
-            font-size: 48px !important;
-            font-weight: 800 !important;
-            color: white !important;
-            margin-bottom: 5px !important;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
-            line-height: 1.1 !important;
+            font-size: 42px;
+            letter-spacing: 2px;
+            margin-bottom: -2px;
           }
           .main-slider__title-two {
-            font-size: 48px !important;
-            font-weight: 800 !important;
-            background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent)) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            margin-bottom: 25px !important;
-            line-height: 1.1 !important;
-            white-space: normal !important;
+            font-size: 26px;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
           }
           .main-slider__text {
-            font-size: 16px !important;
-            color: rgba(255,255,255,0.9) !important;
-            line-height: 1.6 !important;
-            margin-bottom: 35px !important;
-            max-width: 350px !important;
-          }
-          .main-slider__btn {
-            margin-bottom: 40px !important;
-          }
-          .main-slider__btn .thm-btn {
-            padding: 16px 32px !important;
-            font-size: 16px !important;
-            font-weight: 600 !important;
-            border-radius: 30px !important;
-            background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent)) !important;
-            box-shadow: 0 8px 25px rgba(255,107,53,0.4) !important;
-            transition: all 0.3s ease !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
-          }
-          .main-slider__btn .thm-btn:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 12px 35px rgba(255,107,53,0.5) !important;
+            font-size: 14px;
+            margin-bottom: 22px;
+            max-width: 320px;
           }
           .main-slider__form {
-            background: rgba(255,255,255,0.95) !important;
-            backdrop-filter: blur(10px) !important;
-            border-radius: 25px 25px 0 0 !important;
-            padding: 30px 20px !important;
-            margin: 0 !important;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.1) !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
+            margin: 0 12px 18px;
+            padding: 22px 14px 18px;
+            border-radius: 18px;
           }
           .main-slider__form .title-box h2 {
-            font-size: 24px !important;
-            color: #2d3748 !important;
-            text-align: center !important;
-            margin-bottom: 25px !important;
-            font-weight: 700 !important;
+            font-size: 25px;
           }
-          .main-slider__form .form-group {
-            margin-bottom: 20px !important;
+          .quote-subtitle {
+            font-size: 12px;
+            margin-bottom: 12px;
           }
-          .main-slider__form input,
-          .main-slider__form select {
-            width: 100% !important;
-            padding: 16px 20px !important;
-            border: 2px solid #e2e8f0 !important;
-            border-radius: 15px !important;
-            font-size: 16px !important;
-            background: white !important;
-            transition: all 0.3s ease !important;
+          .quote-trust {
+            gap: 6px;
+            margin-bottom: 10px;
           }
-          .main-slider__form input:focus,
-          .main-slider__form select:focus {
-            border-color: var(--suntop-base) !important;
-            box-shadow: 0 0 0 3px rgba(255,107,53,0.1) !important;
-            outline: none !important;
+          .quote-pill {
+            font-size: 10px;
+            padding: 5px 8px;
           }
-          .main-slider__form .button-box .thm-btn {
-            width: 100% !important;
-            padding: 18px !important;
-            font-size: 16px !important;
-            font-weight: 600 !important;
-            border-radius: 15px !important;
-            background: linear-gradient(135deg, var(--suntop-base), var(--suntop-accent)) !important;
-            box-shadow: 0 6px 20px rgba(255,107,53,0.3) !important;
-            transition: all 0.3s ease !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
+          .slider-form-group {
+            margin-bottom: 10px;
           }
-          .main-slider__form .button-box .thm-btn:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 25px rgba(255,107,53,0.4) !important;
+          .slider-form-group input,
+          .slider-form-group select {
+            padding: 12px 13px;
+            font-size: 14px;
           }
-          
-          .notification {
-            position: fixed !important;
-            top: 20px !important;
-            right: 20px !important;
-            background: linear-gradient(135deg, #10b981, #059669) !important;
-            color: white !important;
-            padding: 15px 25px !important;
-            border-radius: 15px !important;
-            box-shadow: 0 10px 30px rgba(16,185,129,0.3) !important;
-            z-index: 99999 !important;
-            font-weight: 600 !important;
-            animation: slideIn 0.5s ease !important;
-            font-size: 16px !important;
-            max-width: 350px !important;
+          .slider-submit-btn {
+            padding: 14px 14px;
+            font-size: 14px;
           }
-          
-          @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+          .quote-note {
+            margin-top: 10px;
+            font-size: 11px;
           }
         }
-        @media (max-width: 480px) {
-          .main-slider__title,
-          .main-slider__title-two {
-            font-size: 36px !important;
+
+        /* Desktop (1024px+) — side by side */
+        @media (min-width: 1024px) {
+          .main-slider {
+            flex-direction: row;
+            align-items: center;
+            min-height: 100vh;
           }
-          .main-slider__text {
-            font-size: 14px !important;
-            max-width: 300px !important;
+          .main-slider__content {
+            position: absolute;
+            left: 80px;
+            top: 55%;
+            transform: translateY(-50%);
+            text-align: left;
+            align-items: flex-start;
+            padding: 0;
+            max-width: 580px;
           }
+          .main-slider__title   { font-size: 110px; letter-spacing: 6px; }
+          .main-slider__title-two { font-size: 64px; letter-spacing: 3px; }
+          .main-slider__text    { font-size: 18px; max-width: 480px; margin-bottom: 36px; }
+          .main-slider__btn .thm-btn { padding: 16px 40px; font-size: 15px; }
           .main-slider__form {
-            padding: 25px 15px !important;
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 430px;
+            margin: 0;
+            border-radius: 24px;
+            padding: 34px 30px 26px;
           }
+          .main-slider__form .title-box h2 {
+            color: white;
+            font-size: 39px;
+          }
+          .quote-subtitle {
+            font-size: 14px;
+            margin-bottom: 16px;
+          }
+        }
+
+        /* Large desktop (1280px+) */
+        @media (min-width: 1280px) {
+          .main-slider__content { left: 100px; max-width: 640px; }
+          .main-slider__title   { font-size: 135px; letter-spacing: 8px; }
+          .main-slider__title-two { font-size: 80px; letter-spacing: 4px; }
+          .main-slider__form    { right: 100px; width: 460px; }
         }
       `}</style>
-      <section className="main-slider">
+
+      <section className="main-slider" aria-label="Hero slider">
         {slides.map((slide, index) => (
-          <div 
+          <div
             key={index}
             className={`main-slider__bg ${index === currentSlide ? 'active' : ''}`}
-            style={{backgroundImage: `url(${slide})`}}
-          ></div>
+            style={{ backgroundImage: `url(${slide})` }}
+            aria-hidden="true"
+          />
         ))}
-        
-        <div className="main-slider__overlay"></div>
-        
+
+        <div className="main-slider__overlay" aria-hidden="true" />
+
         <div className="main-slider__content">
-            <h4 className="main-slider__sub-title">WELCOME TO ROOFSHELTER</h4>
-            <h2 className="main-slider__title">MODERN</h2>
-            <h3 className="main-slider__title-two">ROOFING SOLUTION</h3>
-            <p className="main-slider__text">
-              At RoofShelter, we specialize in delivering high-quality roofing solutions that protect your home and business.
-            </p>
-            <div className="main-slider__btn">
-              <a className="thm-btn" href="/about">
-                About Us
-              </a>
-            </div>
+          <p className="main-slider__sub-title">Welcome to RoofShelter</p>
+          <h1 className="main-slider__title">MODERN</h1>
+          <h2 className="main-slider__title-two">ROOFING SOLUTION</h2>
+          <p className="main-slider__text">
+            At RoofShelter, we specialise in delivering high-quality roofing solutions that protect your home and business.
+          </p>
+          <div className="main-slider__btn">
+            <a className="thm-btn" href="/about">About Us</a>
           </div>
+        </div>
 
         <div className="main-slider__form">
+          <p className="quote-eyebrow">Fast Response Team</p>
           <div className="title-box">
-            <h2>Get your Estimate</h2>
+            <h2>Get Your Free Quote</h2>
+            <p className="quote-subtitle">
+              Share your details and our team will reach out with pricing and the next best step.
+            </p>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input type="text" name="firstname" placeholder="First name" required />
+          <div className="quote-trust" aria-hidden="true">
+            <span className="quote-pill">Licensed & Insured</span>
+            <span className="quote-pill">Same-Day Callback</span>
+            <span className="quote-pill">No Obligation</span>
+          </div>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="slider-form-group">
+              <input type="text" name="firstname" placeholder="First Name" required autoComplete="given-name" />
             </div>
-            <div className="form-group">
-              <input type="text" name="lastname" placeholder="Last name" required />
+            <div className="slider-form-group">
+              <input type="text" name="lastname" placeholder="Last Name" required autoComplete="family-name" />
             </div>
-            <div className="form-group">
-              <input type="email" placeholder="Email" name="email" required />
+            <div className="slider-form-group">
+              <input type="email" name="email" placeholder="Email Address" required autoComplete="email" />
             </div>
-            <div className="form-group">
+            <div className="slider-form-group">
               <select name="location">
                 <option value="">Your Location</option>
                 <option value="Sydney">Sydney</option>
@@ -256,29 +477,18 @@ export default function MainSlider() {
                 <option value="Adelaide">Adelaide</option>
               </select>
             </div>
-            <div className="button-box">
-              <button className="thm-btn" type="submit">
-                Make An Appointment
-              </button>
-            </div>
+            <button className="slider-submit-btn" type="submit">
+              Get My Free Quote
+            </button>
           </form>
+          <p className="quote-note">
+            Need urgent help? Call <a href="tel:+61434115094">+61 434 115 094</a>
+          </p>
         </div>
-        
+
         {showNotification && (
-          <div className="notification" style={{
-            position: 'fixed',
-            top: '20px',
-            right: '20px',
-            background: 'linear-gradient(135deg, #10b981, #059669)',
-            color: 'white',
-            padding: '15px 25px',
-            borderRadius: '15px',
-            boxShadow: '0 10px 30px rgba(16,185,129,0.3)',
-            zIndex: 99999,
-            fontWeight: 600,
-            fontSize: '16px'
-          }}>
-            ✅ Your estimate request submitted successfully! We are getting back to you soon.
+          <div className="slider-notification" role="alert" aria-live="polite">
+            ✅ Quote request submitted! We&apos;ll get back to you soon.
           </div>
         )}
       </section>

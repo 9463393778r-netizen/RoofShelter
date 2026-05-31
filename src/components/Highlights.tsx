@@ -6,219 +6,145 @@ export default function Highlights() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = e.currentTarget as Element
-      if (rect) {
-        const bounds = rect.getBoundingClientRect()
-        setMousePos({
-          x: e.clientX - bounds.left,
-          y: e.clientY - bounds.top
-        })
-      }
-    }
-
     const section = document.querySelector('.highlights-one')
-    if (section) {
-      section.addEventListener('mousemove', handleMouseMove as EventListener)
-      return () => section.removeEventListener('mousemove', handleMouseMove as EventListener)
+    if (!section) return
+    const handleMouseMove = (e: MouseEvent) => {
+      const bounds = section.getBoundingClientRect()
+      setMousePos({ x: e.clientX - bounds.left, y: e.clientY - bounds.top })
     }
+    section.addEventListener('mousemove', handleMouseMove as EventListener)
+    return () => section.removeEventListener('mousemove', handleMouseMove as EventListener)
   }, [])
+
   const projects = [
-    { title: 'Leak Detection & Fix', location: 'Melbourne', image: '/images/blog/10011.jpg' },
-    { title: 'Roof Restoration', location: 'Brisbane', image: '/images/blog/10010.jpg' },
-    { title: 'Gutters & Downpipes', location: 'Perth', image: '/images/blog/10009.jpg' },
-    { title: 'Sarking & Insulation', location: 'Adelaide', image: '/images/blog/10008.jpg' },
-    { title: 'Residential Roofing', location: 'Canberra', image: '/images/blog/10007.jpg' },
-    { title: 'Modified Roofing', location: 'Sydney', image: '/images/modified.jpg' }
+    { title: 'Leak Detection & Fix',  location: 'Melbourne', image: '/images/blog/10011.jpg' },
+    { title: 'Roof Restoration',      location: 'Brisbane',  image: '/images/blog/10010.jpg' },
+    { title: 'Gutters & Downpipes',   location: 'Perth',     image: '/images/blog/10009.jpg' },
+    { title: 'Sarking & Insulation',  location: 'Adelaide',  image: '/images/blog/10008.jpg' },
+    { title: 'Residential Roofing',   location: 'Canberra',  image: '/images/blog/10007.jpg' },
+    { title: 'Modified Roofing',      location: 'Sydney',    image: '/images/modified.jpg'   },
   ]
 
   return (
-    <section 
+    <section
       className="highlights-one"
       style={{
         position: 'relative',
         background: `
           radial-gradient(circle, rgba(0,0,0,0.15) 1px, transparent 1px),
-          radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px),
-          radial-gradient(circle, rgba(0,0,0,0.08) 0.5px, transparent 0.5px)
+          radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px)
         `,
-        backgroundSize: '15px 15px, 25px 25px, 8px 8px',
-        backgroundPosition: '0 0, 8px 8px, 3px 3px',
-        animation: 'floatDots 20s linear infinite, floatDots2 15s linear infinite reverse',
-        overflow: 'hidden'
+        backgroundSize: '15px 15px, 25px 25px',
+        overflow: 'hidden',
       }}
     >
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0,
+        background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, transparent 0, rgba(0,0,0,0.02) 50px, rgba(0,0,0,0.12) 120px)`,
+        pointerEvents: 'none', zIndex: 1, transition: 'all 0.3s ease',
+      }} />
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0,
+        background: `radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px)`,
+        backgroundSize: '20px 20px',
+        backgroundPosition: `${-mousePos.x * 0.02}px ${-mousePos.y * 0.02}px`,
+        pointerEvents: 'none', zIndex: 2, transition: 'background-position 0.4s ease',
+      }} />
+
       <style jsx>{`
         @keyframes floatDots {
-          0% { background-position: 0 0, 8px 8px, 3px 3px; }
-          100% { background-position: 15px 15px, 23px 23px, 11px 11px; }
+          0%   { background-position: 0 0,    8px 8px;  }
+          100% { background-position: 15px 15px, 23px 23px; }
         }
-        @keyframes floatDots2 {
-          0% { transform: translateX(0) translateY(0); }
-          50% { transform: translateX(2px) translateY(-2px); }
-          100% { transform: translateX(0) translateY(0); }
+        /* Mobile base */
+        .highlights-one { padding: 56px 0; }
+        .highlights-one__top { margin-bottom: 40px; text-align: center; position: relative; z-index: 10; }
+        .highlights-one__inner {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 20px;
+          position: relative;
+          z-index: 10;
         }
-        
-        @media (max-width: 768px) {
-          .highlights-one {
-            padding: 60px 0 !important;
-          }
+        .highlights-one__single {
+          position: relative;
+          overflow: hidden;
+          border-radius: 16px;
+          box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+          transition: all 0.3s ease;
+          background: white;
+        }
+        .highlights-one__single:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(0,0,0,0.18); }
+        .highlights-one__img { position: relative; overflow: hidden; }
+        .highlights-one__img img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s ease; display: block; }
+        .highlights-one__single:hover .highlights-one__img img { transform: scale(1.07); }
+        .highlights-one__overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 60%);
+          display: flex;
+          align-items: flex-end;
+          padding: 20px;
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+        .highlights-one__content h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 4px; }
+        .highlights-one__content p  { font-size: 13px; color: rgba(255,255,255,0.85); margin: 0; }
+        .highlights-one__btn { margin-top: 40px; text-align: center; position: relative; z-index: 10; }
+
+        /* Small tablet (480px+) — 2 columns */
+        @media (min-width: 480px) {
+          .highlights-one__inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+          .highlights-one__img img { height: 200px; }
+        }
+
+        /* Tablet (768px+) */
+        @media (min-width: 768px) {
+          .highlights-one { padding: 80px 0; }
+          .highlights-one__inner { gap: 24px; padding: 0 28px; }
+          .highlights-one__img img { height: 240px; }
+          .highlights-one__overlay { opacity: 0; }
+          .highlights-one__single:hover .highlights-one__overlay { opacity: 1; }
+          .highlights-one__content h3 { font-size: 20px; }
+          .highlights-one__content p  { font-size: 15px; }
+        }
+
+        /* Desktop (1024px+) — 3 columns */
+        @media (min-width: 1024px) {
           .highlights-one__inner {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 20px !important;
-            padding: 0 20px !important;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            padding: 0 40px;
+            max-width: 1200px;
+            margin: 0 auto;
           }
-          .highlights-one__img img {
-            height: 200px !important;
-          }
-          .section-title__title {
-            font-size: 36px !important;
-          }
+          .highlights-one__top { margin-bottom: 64px; }
+          .highlights-one__img img { height: 280px; }
+          .highlights-one__btn { margin-top: 56px; }
         }
-        
-        @media (max-width: 480px) {
-          .highlights-one {
-            padding: 50px 0 !important;
-          }
-          .highlights-one__inner {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 25px !important;
-            padding: 0 20px !important;
-          }
-          .highlights-one__single {
-            background: rgba(255,255,255,0.95) !important;
-            border-radius: 15px !important;
-            overflow: hidden !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
-            transform: translateY(0) !important;
-            transition: all 0.3s ease !important;
-          }
-          .highlights-one__single:hover {
-            transform: translateY(-5px) !important;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
-          }
-          .highlights-one__img {
-            position: relative !important;
-            overflow: hidden !important;
-          }
-          .highlights-one__img img {
-            height: 200px !important;
-            width: 100% !important;
-            object-fit: cover !important;
-            transition: transform 0.3s ease !important;
-          }
-          .highlights-one__single:hover .highlights-one__img img {
-            transform: scale(1.05) !important;
-          }
-          .highlights-one__overlay {
-            position: absolute !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8)) !important;
-            padding: 20px !important;
-            opacity: 1 !important;
-          }
-          .highlights-one__content h3 {
-            color: white !important;
-            font-size: 18px !important;
-            margin-bottom: 5px !important;
-            font-weight: 600 !important;
-          }
-          .highlights-one__content p {
-            color: rgba(255,255,255,0.9) !important;
-            font-size: 14px !important;
-            margin: 0 !important;
-          }
-          .section-title__title {
-            font-size: 32px !important;
-            line-height: 1.2 !important;
-            margin-bottom: 15px !important;
-          }
-          .section-title__text {
-            font-size: 16px !important;
-            padding: 0 15px !important;
-            margin-bottom: 40px !important;
-          }
-          .section-title__tagline {
-            font-size: 13px !important;
-            padding: 8px 20px !important;
-            margin-bottom: 15px !important;
-          }
-          .highlights-one__btn {
-            margin-top: 40px !important;
-            text-align: center !important;
-          }
-          .thm-btn {
-            padding: 15px 30px !important;
-            font-size: 16px !important;
-            border-radius: 8px !important;
-          }
+
+        /* Large desktop (1280px+) */
+        @media (min-width: 1280px) {
+          .highlights-one__inner { padding: 0 48px; gap: 32px; }
+          .highlights-one__img img { height: 300px; }
         }
       `}</style>
-      {/* Top corner light overlay */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0.05) 70%, transparent 100%)',
-          pointerEvents: 'none',
-          zIndex: 2
-        }}
-      />
-      {/* Mouse repel effect - dots move away from cursor */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, transparent 0px, rgba(0,0,0,0.02) 50px, rgba(0,0,0,0.1) 100px, rgba(0,0,0,0.15) 150px)`,
-          pointerEvents: 'none',
-          zIndex: 1,
-          transition: 'all 0.3s ease'
-        }}
-      />
-      {/* Floating dots that move away from cursor */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px),
-            radial-gradient(circle, rgba(0,0,0,0.15) 1.5px, transparent 1.5px),
-            radial-gradient(circle, rgba(0,0,0,0.1) 0.8px, transparent 0.8px)
-          `,
-          backgroundSize: '20px 20px, 35px 35px, 12px 12px',
-          backgroundPosition: `${-mousePos.x * 0.02}px ${-mousePos.y * 0.02}px, ${-mousePos.x * 0.015}px ${-mousePos.y * 0.015}px, ${-mousePos.x * 0.01}px ${-mousePos.y * 0.01}px`,
-          pointerEvents: 'none',
-          zIndex: 3,
-          transition: 'background-position 0.5s ease'
-        }}
-      />
+
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <div className="highlights-one__top">
           <div className="section-title text-center">
             <span className="section-title__tagline">Portfolio Showcase</span>
             <h2 className="section-title__title">Our Recent Projects</h2>
-            <p className="section-title__text">Quality work across Australia - delivering excellence in every roofing solution</p>
+            <p className="section-title__text">Quality work across Australia – delivering excellence in every roofing solution</p>
           </div>
         </div>
-        
         <div className="highlights-one__bottom">
           <div className="highlights-one__inner">
             {projects.map((project, index) => (
               <div key={index} className="highlights-one__single">
                 <div className="highlights-one__img">
-                  <Image src={project.image} alt={project.title} width={400} height={300} />
+                  <Image src={project.image} alt={`${project.title} – ${project.location}`} width={400} height={300} />
                   <div className="highlights-one__overlay">
                     <div className="highlights-one__content">
                       <h3>{project.title}</h3>
@@ -230,11 +156,8 @@ export default function Highlights() {
             ))}
           </div>
         </div>
-        
         <div className="highlights-one__btn">
-          <a href="/projects" className="thm-btn">
-            View More Work
-          </a>
+          <a href="/projects" className="thm-btn">View More Work</a>
         </div>
       </div>
     </section>
